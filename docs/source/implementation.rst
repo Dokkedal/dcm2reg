@@ -17,6 +17,9 @@ Registrations
 Evaluation of registrations - Philip
 ===========================
 
+Evaluation of registration can be done via several methods. One of them is converting the images to a matrix.
+Entries with a value of zero means there is no tissue and a value of 
+
 * Crop zero-columns
 * Crop threshold (manual)
 * Compute MutualInformation
