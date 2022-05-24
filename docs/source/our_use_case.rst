@@ -6,6 +6,10 @@ Our data
 
 * Visual examples - different scans - Philip
 * Levels - color code - Philip
+
+In addition to the images themselves, the data contains various header information, such as 
+the *modality* of the image (i.e. whether it is a CT-, PET- or MR-scan)
+
 * Additional information - Jonathan
 * Delineation in RTSTRUCT - Jonathan
 * Noise e.g. table - Philip
