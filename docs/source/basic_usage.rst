@@ -10,8 +10,8 @@ conversion the user has to supply the code with a path to the location of the DI
 DICOM-files the user wants converted. The user also has to supply the code with a list of modalities to look
 for and wich regions of interest we are interested in.
 
-``
-INSERT IMAGE OF CODE
+.. literalinclude:: dictwriter_tutorial.py
+    :language: python
 
 Registration
 ============
