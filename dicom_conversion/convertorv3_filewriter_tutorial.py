@@ -71,17 +71,9 @@ STRUCTURE_SET_DATE_TAG = (0x3006, 0x8)
 STRUCTURE_SET_TIME_TAG = (0x3006, 0x9)
 STRUCTURE_SET_RIO_SEQUENCE_TAG = (0x3006, 0x20)   
 
-def parse_args(sourcedir,targetdir,miscdir, modalitylist, ROIs,includered,includeorange,includeyellow):
+def parse_args(targetdir,miscdir, modalitylist, ROIs,includered,includeorange,includeyellow):
     """Parse input arguments"""
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
-
-    parser.add_argument( 
-        '--source_dir',
-        default = pathlib.Path(sourcedir),
-        type=pathlib.Path,
-        help='root to source',
-        #required=False
-    )
 
     parser.add_argument(
         '--target_dir',
