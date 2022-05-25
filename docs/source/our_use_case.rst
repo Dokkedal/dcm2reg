@@ -67,8 +67,16 @@ and wrapped the attribute reading in an exception catcher as follows.
 ..
     * Many edge cases e.g. missing secondary study - Jonathan
 
-The general hetereogeneity of the data also posed a challenge, since there were so
-many edge cases to consider. 
+The general hetereogeneity of the data also poses a challenge, since there are so
+many edge cases to consider. Some patients do not have a CT-scan with RTSTRUCT-files at
+all, which consequently means none of the scans for that patient will be selected for 
+conversion. This essentially causes any PET- and MR-scans to be dropped due to a lack of
+CT-scans with delineations. The opposite is also an issue. If there are several CT-scans
+with delineations, but no PET- or MR-scans, the selection program cannot be sure which
+of the CT-scans to choose, since this is usually done by comparing how many PET- or MR-scans
+relate to the individual CT-scans.
+
+
 
 * A lot of data and therefore slow running - solved in conversion by splitting process. - Jonathan
 * Noise limiting use of thresholding - Philip
