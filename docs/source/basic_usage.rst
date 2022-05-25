@@ -28,7 +28,7 @@ Evaluation
 The evaluation part of the module loads the registered pictures and evaluates by computing a metric. The user 
 will need to supply the code with a path to the registered pictures and how many pictures the user wants converted.
 
-.. literalinclude:: ../../evalution_tutorial.py
+.. literalinclude:: ../../evaluation_tutorial.py
     :language: python
 
 
