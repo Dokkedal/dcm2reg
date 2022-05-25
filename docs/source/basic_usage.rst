@@ -29,6 +29,7 @@ requires the maximum allowed days between a primary study and secondary study: `
 
 .. literalinclude:: ../../dictwriter_tutorial.py
     :language: python
+    :linenos:
 
 The next part of the conversion is handled by the function ``convertorv3_filewriter_tutorial``. This function
 takes the excel file written by the previous function as input and from this converts to nifti files.
@@ -39,6 +40,7 @@ outputted to the directory ``targetdir``.
 
 .. literalinclude:: ../../filewriter_tutorial.py
     :language: python
+    :linenos:
 
 Registration
 ============
@@ -53,9 +55,9 @@ variables ``startpatient`` and ``endpatient`` which is the first two arguements.
 the margin of the croppoing box and the flagging_threshold using the variables ``margin`` and ``flagging``. These
 are the last two arguements.
 
-
 .. literalinclude:: ../../evaluation_tutorial.py
     :language: python
+    :linenos:
 
 
 
