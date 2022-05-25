@@ -15,6 +15,5 @@ sourcedir = os.path.join(os.path.dirname(cwd),"data","nifti_reg")
 miscdir = os.path.join(os.path.dirname(cwd),"data","misc_output")
 
 #startpatient,endpatient,sourcedir,miscdir, margin, flaggingthreshold
-
 parsed_args = evaluation.parse_args(1,10,sourcedir,miscdir,3,0.5)
 evaluation.main(parsed_args)
