@@ -58,12 +58,18 @@ To overcome this challenge, we have avoided making decisions based on the descri
 and wrapped the attribute reading in an exception catcher as follows.
 
 .. literalinclude:: ../../dicom_conversion/convertorv3_functions.py
+    :linenos:
+    :lineno-start: 439
     :language: python
     :lines: 439-446
+    :emphasize-lines: 441-446
 
+..
+    * Many edge cases e.g. missing secondary study - Jonathan
 
+The general hetereogeneity of the data also posed a challenge, since there were so
+many edge cases to consider. 
 
-* Many edge cases e.g. missing secondary study - Jonathan
 * A lot of data and therefore slow running - solved in conversion by splitting process. - Jonathan
 * Noise limiting use of thresholding - Philip
 * Thresholding based on change in pixel value turned out to be not possible - Philip
