@@ -72,7 +72,7 @@ STRUCTURE_SET_TIME_TAG = (0x3006, 0x9)
 STRUCTURE_SET_RIO_SEQUENCE_TAG = (0x3006, 0x20)
 
 
-def parse_args(startpatient,endpatient,sourcedir,targetdir,miscdir,modalitylist,ROIs,maxdelineationdelay,maxstudydelay):
+def parse_args(startpatient,endpatient,sourcedir, miscdir,modalitylist,ROIs,maxdelineationdelay,maxstudydelay):
     """Parse input arguments"""
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 
@@ -81,14 +81,6 @@ def parse_args(startpatient,endpatient,sourcedir,targetdir,miscdir,modalitylist,
         default = pathlib.Path(sourcedir),
         type=pathlib.Path,
         help='root to source',
-        #required=False
-    )
-
-    parser.add_argument(
-        '--target_dir',
-        default = pathlib.Path(targetdir),
-        type=pathlib.Path,
-        help='root to target',
         #required=False
     )
 
