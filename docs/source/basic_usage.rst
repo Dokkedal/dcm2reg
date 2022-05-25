@@ -13,6 +13,11 @@ for and wich regions of interest we are interested in.
 .. literalinclude:: ../../dictwriter_tutorial.py
     :language: python
 
+TEXT about filewriter
+
+.. literalinclude:: ../../filewriter_tutorial.py
+    :language: python
+
 Registration
 ============
 
@@ -23,6 +28,8 @@ Evaluation
 The evaluation part of the module loads the registered pictures and evaluates by computing a metric. The user 
 will need to supply the code with a path to the registered pictures and how many pictures the user wants converted.
 
+.. literalinclude:: ../../evalution_tutorial.py
+    :language: python
 
 
 
