@@ -46,18 +46,18 @@ the data that has been processed. Often this is time consuming, and sometimes th
 is not as good at spotting irregularities as computers might be. Therefore, 
 a 'metric' is often used. Metrics often gives one or two values as describes
 how good or how accurate the data has been preprocessed. In our case the 
-'accuracy' is how similar our CT and MR 3-d image is. We have chosen the
+'accuracy' is how similar our CT and MR 3D-image is. We have chosen the
 'MutualInformation' as our validation metric. This metric focuses on the
 structure similarities and uses among other things voxel color values 
 for this.
 
 * Cropping - relevant in proportion to Metrics
 Because 'mutual information' uses structural similarities and
-voxel color values, we need to crap the image to all the air gets erased,
-because air has the same picture collar value and thus were result
+voxel color values, we need to crop the image to all the air gets erased,
+because air has the same picture color value and thus were result
 in a lot of false accuracy. In addition to that we also require
 the images to have the same size, since we can't compare 'something' with
-'nothing'. Lastly, we also need all the slices in the 3-d image to be 
+'nothing'. Lastly, we also need all the slices in the 3D-image to be 
 comparable, which means that the drawing architecture should be clean and without noise
 
 
