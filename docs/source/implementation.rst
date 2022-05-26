@@ -18,10 +18,10 @@ Evaluation of registrations - Philip
 ===========================
 Evaluation of registrations can be done via several methods. We are using a cropbox in order to evaluate
 the registration of our images. A cropbox is a cropped version of the image where the cropped part comprises 
-more comparable parts of the image. The cropbox thus removes parts of the image that consists of air
-by cropping voxels with a color value of less than 1. Noisy tissue or images containing very little tissue
-can also be a problem but this is taken into account by providing the cropbox with a margin. The margin is the
-number of addtional images to be cropped besides the images with color values of less than 1.
+more comparable parts of the image. The cropbox thus removes as many pixels as possible with a value of zero
+but without removing pixels with values larger than zero. Thus it minimizes the amount of pixels that represent
+air in the cropped image. The cropbox also contains a margin meaning after the image has been cropped an additional
+amount of slices are removed in order to secure there is even less pixels representing air.
 
 For evaluating the registration a metric is computed, in this case AdvancedMattesMutualInformation. One of 
 the advantages of using this metric is that the modalities of the images doesn't have to be the same. So even
@@ -48,12 +48,12 @@ know from checking manually that registrations with a metric score of 0.5 or les
 evalution of the registrations is done an overview of the metric scores is produced as an excel sheet. The 
 flagged values have been colored red.
 
-
-* Crop zero-columns
-* Crop threshold (manual)
-* Compute MutualInformation
-* Flag values below threshold
-* Logging
+..
+    * Crop zero-columns
+    * Crop threshold (manual)
+    * Compute MutualInformation
+    * Flag values below threshold
+    * Logging
 
 
 
