@@ -11,7 +11,7 @@ The data consits of several different scans: CT, PET and MR. The scans have diff
 an MR scan will show bone as being dark whereas a CT scan will show bone as being bright which stems from
 the way the different scans are produced. The scans also have different color codes for air and soft tissue.
 
-test
+test2
 
 .. list-table::
     * - .. figure:: images/mr_scan.png
@@ -21,7 +21,7 @@ test
 
             MR scan of patient
 
-      - .. figure:: images/ct_scan.png
+    * - .. figure:: images/ct_scan.png
             :align: center
             :alt: alternate text
             :figclass: align-center
