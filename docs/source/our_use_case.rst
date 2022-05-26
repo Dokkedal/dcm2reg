@@ -8,8 +8,24 @@ Our data
 * Levels - color code - Philip
 
 The data consits of several different scans: CT, PET and MR. The scans have different color coding. For example
-an MR scan will show tissue as being dark whereas a CT scan will show tissue as being bright which stems from
-the way the different scans are produced
+an MR scan will show bone as being dark whereas a CT scan will show bone as being bright which stems from
+the way the different scans are produced. The scans also have different color codes for air and soft tissue.
+
+.. list-table::
+    * - .. figure:: images/mr_scan.png
+            :align: center
+            :alt: alternate text
+            :figclass: align-center
+
+            MR scan of patient
+            
+      - .. figure:: images/ct_scan.png
+            :align: center
+            :alt: alternate text
+            :figclass: align-center
+
+            CT scan of patient
+
 
 
 ..

@@ -35,7 +35,7 @@ to do a manual evaluation of low performing registrations. Flagged registrations
 file. A metric score of 0.5 has been chosen as the threshold for flagging registrations. The score is based
 partly on manual evaluation of several registrations but also by plotting a histogram of the scores.
 
-.. figure:: Histogram_of_metric_score.png
+.. figure:: images/Histogram_of_metric_score.png
     :align: center
     :alt: alternate text
     :figclass: align-center
