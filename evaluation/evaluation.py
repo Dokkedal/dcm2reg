@@ -153,7 +153,7 @@ def parse_args(startpatient,endpatient,sourcedir,miscdir, margin, flaggingthresh
 def main(args):   
     #folder_path = "E:/Jasper/nnUNet/nnUNet_raw_data/Task700_HNCDL"
     #folder_pathrig = "E:/Jasper/HNSCC/nifti_reg"
-    folder_pathrig = args.source_dir
+    folder_pathrig = args.source_dir.__fspath__()
     
     registration_method = sitk.ImageRegistrationMethod()
     registration_method.SetMetricAsMattesMutualInformation()
@@ -178,8 +178,9 @@ def main(args):
                 mr2image = sitk.ReadImage(folder_pathrig + "/" + mr2)
                 mr1imagerig = sitk.ReadImage(folder_pathrig + "/" + mr1rig)  
                 mr2imagerig = sitk.ReadImage(folder_pathrig + "/" + mr2rig)
-        except:
+        except Exception as e:
             print("Missing file",patient_num)
+            print(e)
             continue
     
         #ctimage = sitk.Clamp(ctimage, lowerbound=2, upperbound=3)
