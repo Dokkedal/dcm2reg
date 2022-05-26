@@ -11,7 +11,7 @@ import tqdm
 import argparse
 import pathlib
 
-def parse_args(sourcedir, startpatient, endpatient):
+def parse_args(sourcedir,targetdir, startpatient, endpatient):
     """Parse input arguments"""
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 
@@ -38,6 +38,14 @@ def parse_args(sourcedir, startpatient, endpatient):
         default = endpatient,
         type=int,
         help='index of patient to end',
+        #required=False
+    )
+    
+    parser.add_argument( 
+        '--target_dir',
+        default = pathlib.Path(targetdir),
+        type=pathlib.Path,
+        help='output to nifti-files',
         #required=False
     )
     
@@ -187,8 +195,6 @@ def main(args):
         except:
             print("Missing file",patient_num)
             continue
-
-        
         
         
         for i in range(1,99):
@@ -199,12 +205,15 @@ def main(args):
                 
         regfolder = outfolder  
         
+        niftireg_folder = args.target_dir
+
+
         sitk.WriteParameterFile(parameterMapRigid, os.path.join(regfolder, 'rigid_params.txt'))
         
         shutil.copy(__file__, os.path.join(regfolder, os.path.basename(__file__)))  # dst can be a folder; use shutil.copy2() to preserve timestamp
-        sitk.WriteImage(fixed, os.path.join(outfolder, 'fixed.nii'))
-        sitk.WriteImage(moving, os.path.join(outfolder, 'moving.nii'))
-        sitk.WriteImage(moving2, os.path.join(outfolder, 'moving2.nii'))
+        sitk.WriteImage(fixed, os.path.join(niftireg_folder, 'HNCDL_{:03d}_fixed.nii'.format(patient_num)))
+        sitk.WriteImage(moving, os.path.join(niftireg_folder, 'HNCDL_{:03d}_moving.nii'.format(patient_num)))
+        sitk.WriteImage(moving2, os.path.join(niftireg_folder, 'HNCDL_{:03d}_moving2.nii'.format(patient_num)))
         
         
         elastix = sitk.ElastixImageFilter()
@@ -221,10 +230,10 @@ def main(args):
         mask = resultImage>0
         resultImage = resultImage*sitk.Cast(mask, resultImage.GetPixelID()) 
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
-        sitk.WriteImage(resultImage, os.path.join(outfolder, 'T1_rigid_reg.nii'))
+        sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T1_rigid_reg.nii'.format(patient_num)))
         
-        Transform = os.path.join(outfolder, 'TransformParameters.0.txt')
-        rigidTransform = os.path.join(outfolder, 'TransformRigid.txt')
+        Transform = os.path.join(niftireg_folder, 'TransformParameters.0.txt')
+        rigidTransform = os.path.join(niftireg_folder, 'TransformRigid.txt')
         if os.path.exists(rigidTransform):
             os.remove(rigidTransform)
         if os.path.exists(Transform):
@@ -236,14 +245,14 @@ def main(args):
         threshold = np.average(array[array > 0])/2
         moving_mask = sitk.Cast(resultImage>threshold,sitk.sitkUInt8)
         moving_mask = holefill_filter.Execute(moving_mask)
-        # sitk.WriteImage(fixed_mask, os.path.join(outfolder, 'fixed_mask.nii'))
+        # sitk.WriteImage(fixed_mask, os.path.join(niftireg_folder, 'fixed_mask.nii'))
         fixed_mask = fixed_mask + moving_mask
         fixed_mask = sitk.Cast(fixed_mask>1,sitk.sitkUInt8)
         dilate_filter.SetKernelRadius( 15 )
         fixed_mask = dilate_filter.Execute(fixed_mask)
         erode_filter.SetKernelRadius(12)
         fixed_mask = erode_filter.Execute(fixed_mask)
-        sitk.WriteImage(fixed_mask, os.path.join(outfolder, 'fixed_mask.nii'))
+        sitk.WriteImage(fixed_mask, os.path.join(niftireg_folder, 'HNCDL_{:03d}_fixed_mask.nii'.format(patient_num)))
         
         del elastix
         
@@ -263,20 +272,20 @@ def main(args):
         mask = resultImage>0
         resultImage = resultImage*sitk.Cast(mask, resultImage.GetPixelID()) 
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
-        sitk.WriteImage(resultImage, os.path.join(outfolder, 'T1_bspline_reg.nii'))
+        sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T1_bspline_reg.nii'.format(patient_num)))
         
         del elastix
         
-        Transform = os.path.join(outfolder, 'TransformParameters.0.txt')
-        rigidTransform2 = os.path.join(outfolder, 'TransformRigid2.txt')
+        Transform = os.path.join(niftireg_folder, 'TransformParameters.0.txt')
+        rigidTransform2 = os.path.join(niftireg_folder, 'TransformRigid2.txt')
         
         if os.path.exists(Transform):
             if os.path.exists(rigidTransform2):
                 os.remove(rigidTransform2)
             os.rename(Transform, rigidTransform2)#rename
             
-        Transform = os.path.join(outfolder, 'TransformParameters.1.txt')
-        BsplineTransform = os.path.join(outfolder, 'TransformBspline.txt')
+        Transform = os.path.join(niftireg_folder, 'TransformParameters.1.txt')
+        BsplineTransform = os.path.join(niftireg_folder, 'TransformBspline.txt')
         
         if os.path.exists(Transform):
             if os.path.exists(BsplineTransform):
@@ -296,21 +305,21 @@ def main(args):
         mask = resultImage>0
         resultImage = resultImage*sitk.Cast(mask, resultImage.GetPixelID()) 
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
-        sitk.WriteImage(resultImage, os.path.join(outfolder, 'T2_rigid_reg.nii'))
+        sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T2_rigid_reg.nii'.format(patient_num)))
         transformix.AddTransformParameterMap(parameter1)
         transformix.Execute()
         resultImage = transformix.GetResultImage()
         mask = resultImage>0
         resultImage = resultImage*sitk.Cast(mask, resultImage.GetPixelID()) 
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
-        sitk.WriteImage(resultImage, os.path.join(outfolder, 'T2_rigid_reg2.nii'))
+        sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T2_rigid_reg2.nii'.format(patient_num)))
         transformix.AddTransformParameterMap(parameter2)
         transformix.Execute()
         resultImage = transformix.GetResultImage()
         mask = resultImage>0
         resultImage = resultImage*sitk.Cast(mask, resultImage.GetPixelID()) 
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
-        sitk.WriteImage(resultImage, os.path.join(outfolder, 'T2_bspline_reg.nii'))
+        sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T2_bspline_reg.nii'.format(patient_num)))
         
         del transformix
         
@@ -323,7 +332,7 @@ def main(args):
         mask = resultImage>0
         resultImage = resultImage*sitk.Cast(mask, resultImage.GetPixelID()) 
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
-        sitk.WriteImage(resultImage, os.path.join(outfolder, 'T1_rigid_reg2.nii'))
+        sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T1_rigid_reg2.nii'.format(patient_num)))
         del transformix2
         
         
