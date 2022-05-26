@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'dcm2reg'
+copyright = '2022, Andreas Busch, Philip Leth and Jonathan Nielsen'
+author = 'Andreas Busch, Philip Leth and Jonathan Nielsen'
 
 release = '0.1'
 version = '0.1.0'
