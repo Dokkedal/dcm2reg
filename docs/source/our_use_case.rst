@@ -56,21 +56,27 @@ These are all limiting factors when wanting to do comparisons and evaluation.
 
 Our pipeline and the big picture
 ================================
-
 ..
     * Preprocessing - conversion, registration, Evaluation - Philip
 The module can be considered as a pipeline which consists of several steps: preprocessing, model development and
 model usage.
 
+.. figure:: images/automated_pipeline2.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    Flowchart of the pipeline
+
 Preprocessing
-*************
+-------------
 The preprocessing part of the pipeline handles conversion, regristration and evaluation of the registrations.
 This entails conversion of DICOM-files to the nifti format and afterwards regristration of the nifti files.
 The evaluation is based on a metric score computed from the registrations. In our case the MutualInformation
 metric makes sense and having an evaluation threshold at 0.5 is again case specific.
 
 Model development
-*****************
+-----------------
 ..
     * Model development - neural network, comparison (CT vs CT+MR) - Busch 
 Model development takes the registered images with an adequate metric score and runs them through a chosen 
@@ -80,8 +86,8 @@ with supervised learning since we know what the delineations should look like. n
 network to use since it can figure out the hyperparameters (amount of layers, error function, number of neurons, 
 etc.) given the images and labels.
 
-Model usage
-***********
+
+
 ..
     * Model usage - implementation, user acceptance - Busch
 
