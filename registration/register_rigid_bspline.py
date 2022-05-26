@@ -7,7 +7,7 @@ import os
 import math
 from scipy import signal
 import shutil
-import tqdm
+from tqdm import tqdm
 import argparse
 import pathlib
 
@@ -232,8 +232,8 @@ def main(args):
         resultImage = sitk.Cast(resultImage,sitk.sitkUInt16)
         sitk.WriteImage(resultImage, os.path.join(niftireg_folder, 'HNCDL_{:03d}_T1_rigid_reg.nii'.format(patient_num)))
         
-        Transform = os.path.join(niftireg_folder, 'TransformParameters.0.txt')
-        rigidTransform = os.path.join(niftireg_folder, 'TransformRigid.txt')
+        Transform = os.path.join(regfolder, 'TransformParameters.0.txt')
+        rigidTransform = os.path.join(regfolder, 'TransformRigid.txt')
         if os.path.exists(rigidTransform):
             os.remove(rigidTransform)
         if os.path.exists(Transform):
@@ -276,16 +276,16 @@ def main(args):
         
         del elastix
         
-        Transform = os.path.join(niftireg_folder, 'TransformParameters.0.txt')
-        rigidTransform2 = os.path.join(niftireg_folder, 'TransformRigid2.txt')
+        Transform = os.path.join(regfolder, 'TransformParameters.0.txt')
+        rigidTransform2 = os.path.join(regfolder, 'TransformRigid2.txt')
         
         if os.path.exists(Transform):
             if os.path.exists(rigidTransform2):
                 os.remove(rigidTransform2)
             os.rename(Transform, rigidTransform2)#rename
             
-        Transform = os.path.join(niftireg_folder, 'TransformParameters.1.txt')
-        BsplineTransform = os.path.join(niftireg_folder, 'TransformBspline.txt')
+        Transform = os.path.join(regfolder, 'TransformParameters.1.txt')
+        BsplineTransform = os.path.join(regfolder, 'TransformBspline.txt')
         
         if os.path.exists(Transform):
             if os.path.exists(BsplineTransform):

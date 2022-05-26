@@ -38,7 +38,7 @@ from datetime import datetime
 
 import ast
 
-from image_readers import read_dcm_series
+from .image_readers import read_dcm_series
 
 # Setup logging
 # TODO: Move this to a central logger.

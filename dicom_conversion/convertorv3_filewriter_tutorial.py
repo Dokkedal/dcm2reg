@@ -40,10 +40,10 @@ from datetime import datetime
 # -*- coding: utf-8 -*-
 #from pandas.io.json import json_normalize
 
-from convertorv3_functions import wirte_primary_image_with_ROIs, write_secondary_images, read_dicts_from_excel
+from .convertorv3_functions import wirte_primary_image_with_ROIs, write_secondary_images, read_dicts_from_excel
 import ast
 
-from image_readers import read_dcm_series
+from .image_readers import read_dcm_series
 
 # Setup logging
 # TODO: Move this to a central logger.
