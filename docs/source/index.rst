@@ -31,8 +31,9 @@ as a whole.
 The contributions of the data science students can be generally summarised as 
 follows:
 
-* Splitting the conversion script into several restructured ones and exporting 
-scan selections to an Excel-file to allow for manual checking and control.
+* Splitting the conversion script written by Jintao into several restructured 
+ones and exporting scan selections to an Excel-file to allow for manual checking
+and control.
 * Flagging issues with scans for conversion.
 * Handling errors and changing decisions for scan selection. 
 * Writing functions to evaluate registration of images based on a metric score.
