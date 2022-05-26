@@ -7,6 +7,11 @@ Our data
 * Visual examples - different scans - Philip
 * Levels - color code - Philip
 
+The data consits of several different scans: CT, PET and MR. The scans have different color coding. For example
+an MR scan will show tissue as being dark whereas a CT scan will show tissue as being bright which stems from
+the way the different scans are produced
+
+
 ..
     * Additional information - Jonathan
     * Delineation in RTSTRUCT - Jonathan

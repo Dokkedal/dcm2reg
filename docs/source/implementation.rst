@@ -16,8 +16,7 @@ Registrations
 
 Evaluation of registrations - Philip
 ===========================
-
-Evaluation of registration can be done via several methods. We are using a cropbox in order to evaluate
+Evaluation of registrations can be done via several methods. We are using a cropbox in order to evaluate
 the registration of our images. A cropbox is a cropped version of the image where the cropped part comprises 
 more comparable parts of the image. The cropbox thus removes parts of the image that consists of air
 by cropping voxels with a color value of less than 1. Noisy tissue or images containing very little tissue
@@ -43,12 +42,11 @@ partly on manual evaluation of several registrations but also by plotting a hist
 
     Histogram of metric score
 
-
-
-There is a clear drop between values 
-
-When evalution of the registrations is done an overview of the 
-metric scores is produced as an excel sheet. The flagged values have been colored red.
+There is a clear drop around 0.5 meaning the frequency of registrations with a value of 0.5 or smaller is low.
+It then makes sense to have 0.5 as a threshold since it doesn't remove too many of the registrations and we 
+know from checking manually that registrations with a metric score of 0.5 or less are registered badly. When 
+evalution of the registrations is done an overview of the metric scores is produced as an excel sheet. The 
+flagged values have been colored red.
 
 
 * Crop zero-columns
