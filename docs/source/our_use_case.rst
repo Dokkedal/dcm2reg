@@ -136,17 +136,37 @@ relate to the individual CT-scans.
 * A lot of data and therefore slow running - solved in conversion by splitting process. - Jonathan
 ..
     * Noise limiting use of thresholding - Philip
-In proportion to evaluation of registered images thresholding on a color value was considered but noise in
-the form of tables and dental fillings proved this procedure to be more complicated than first anticipated.
-The solution was instead a mix of thresholding on color value and croppping the images using a cropbox. Thus
-air was still efficiently removed via thresholding whereas noise as for example the table was removed by 
-cropping the image via a margin.
 
-* Thresholding based on change in pixel value turned out to be not possible - Philip
-* Different MR's have different colors - Philip
-* Field difficulty and lack of documentation - Busch
+In proportion to evaluation of registered images thresholding on a color value was considered but noise in
+the form of tables and dental fillings proved this procedure to be more complicated than first anticipated. 
+We wished to evaluate using a dice coefficient. Thus it was necessary to produce a mask so unwanted pixels 
+didn't come in to play when evaluating. The idea was to let all pixels with a value larger than zero, where
+a value of zero equals air, constitute the mask. A table would have a value larger than zero but it would
+not be desireable to include in the evaluation. Also the dice coefficient is vulnerable to varying volumes of 
+the scanned object. These two issues caused us to use another evaluation method and metric.
+
+The solution was instead a mix of thresholding on color value and croppping the images using a cropbox. The
+cropbox minimizes the amount of pixels with a value of zero by cropping as close as possible around the
+desired region. Thus it will never crop away values that are larger than zero which we want to keep. 
+This means pixels that constitute air are still a part of the evaluation but the problem has been minimized. 
+We always crop based on the MR image meaning noise such as a table is not included in the cropped image. 
+This is because the table does not show up on an MR-scan and the MR-scans have smaller dimensions than the 
+CT-scans meaning it would be cropped no matter what. The metric used for evaluation was changed to 
+MutualInformation instead since producing a mask that only includes values larger than zero was impractical.
+
+..
+    * Thresholding based on change in pixel value turned out to be not possible - Philip
+Again in proportion to evaluation an idea was to look at differences in the color value sum for each slice in
+an MR-scan. Thus we would calculate the value sum of a slice and then take the next slice and calculate the
+sum again. If the difference in the two sums were large enough, that is above a certain threshold we crop the
+image at that slice since a large difference in sums would mean going from air to tissue. The problem was
+finding a threshold applicable to all patients. This proved impossible since the starting slice
+is not always located the same place for each scan meaning if the starting slice is the side of the patients head
+we would never achieve a high difference in sums.
+
 * Excel cell character limit - Jonathan
-* 
+
+ 
  
 
 
