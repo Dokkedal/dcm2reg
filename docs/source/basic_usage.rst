@@ -47,6 +47,10 @@ Registration
 
 Skal vi gennemgå noget af jaspers kode her eller?
 
+.. literalinclude:: ../../registration_tutorial.py
+    :language: python
+    :linenos:
+
 Evaluation
 ==========
 The evaluation part of the module loads the registered pictures and evaluates by computing a metric. The user 

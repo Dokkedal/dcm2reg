@@ -1,4 +1,5 @@
 
+.. _background:
 Background
 **********
 
@@ -12,20 +13,20 @@ doctors can use for planning dosage delivery. Several different kinds
 of scans are used, including:
 
 * *Computed Tomography* (CT) scans. These essentially take cross-sectional
-slices (tomograms) and that can be used in computing a reconstruction of
-the full 3D-image. CT-scans typically indicate air with a value of -1000,
-water with 0, and bone with 400 or greater (measured in Hounsfield units).
+  slices (tomograms) and that can be used in computing a reconstruction of
+  the full 3D-image. CT-scans typically indicate air with a value of -1000,
+  water with 0, and bone with 400 or greater (measured in Hounsfield units).
 * *Positron emission tomography* (PET/PT) scans. These utilise gamma rays to 
-visualise injected radiotracers, which are essentially compounds that are 
-radioactively decaying in such a way that the PT-scan can show the spatial 
-journey of the compounds during a scan. Many different radiotracers exist, 
-e.g. for metabolism and blood flow tracing, and the way in which a PT-scan 
-visualises compounds depends on the choice of radiotracer and the chosen task.
+  visualise injected radiotracers, which are essentially compounds that are 
+  radioactively decaying in such a way that the PT-scan can show the spatial 
+  journey of the compounds during a scan. Many different radiotracers exist, 
+  e.g. for metabolism and blood flow tracing, and the way in which a PT-scan 
+  visualises compounds depends on the choice of radiotracer and the chosen task.
 * *Magnetic Resonance* (MR) scans. These use magnetic resonance to visualise
-body tissue and other substances and come in two types: T1-MR and T2-MR,
-which measure different kinds of magnetic resonance. They typically indicate
-bone and air with values close to 0 and fat with higher values, while the
-visualisation values of water, protein-rich fluids etc. depend on the type used.
+  body tissue and other substances and come in two types: T1-MR and T2-MR,
+  which measure different kinds of magnetic resonance. They typically indicate
+  bone and air with values close to 0 and fat with higher values, while the
+  visualisation values of water, protein-rich fluids etc. depend on the type used.
 
 .. 
     * Voxels
@@ -42,24 +43,32 @@ the type of scan, i.e. voxels that show air will have a value of -1000 in CT-sca
 and a value of around 0 in MR-scans, as described above.
 
 ..
-    * Dicom format 
+    * DICOM format 
 
 DICOM is an acronym for Digital Imaging and Communications in Medicine. 
 It is a file format that stores digital 2D-images. Since medical scans are 3D-images,
 you often need hundreds of DICOM files to represent a single scan. Additionally, 
-DICOM files can also store medical information. Thus DICOM-files insures that all 
-the data for each patient stays with the respective patient.
+DICOM files can also store medical information, e.g. descriptions of the scans.
+Thus DICOM-files ensure that all the data for each patient stays with the 
+respective patient.
 
-* nifti format - input neural network 
+Typically, all three types of medical scans are stored in the DICOM-format from
+the beginning. However, in order to make them easier to handle for both doctors
+and an ultimate deep learning model, they need to be converted into a niftier format.
+
+..
+    * NIfTI format - input neural network 
+
 Instead of having a lot of 2D-slices to represent a body part, 
-we want to represented it as a 3D-slice. This makes it even easier
- to keep all the data together, since we do not have hundreds of files 
- we should manage. In addition to that the nifti-file does also contain 
- all of the medical information. This nifti-format is also the input type 
- for the neural network. 
-
-
-
+we want to represent it as a 3D-volume. This is exactly what the Neuroimaging
+Informatics Technology Initiative (NIfTI) file format accomplishes. This makes
+it easier to keep all the data together, since there are no longer
+hundreds of files to manage. In addition to that the NIfTI-file also contains 
+all of the medical information. These NIfTI-files can also be used as input
+for a deep learning model. In fact, the deep learning framework known as nnU-Net,
+which is commonly used to automatically tune hyperparameters and train the network
+in medical image tasks, only accepts NIfTI-formatted 3D-scans, making the format
+significantly more advantageous than the DICOM-format.
 
 Registration 
 ============

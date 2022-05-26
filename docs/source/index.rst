@@ -10,6 +10,18 @@ The module is available in ``python`` and is known to work on Windows, however
 other common operating systems (OS X, Linus) likely work as well, as long as
 dependencies can be properly installed.
 
+The preprocessing which ``dcm2reg`` is useful for broadly consists of three
+steps that propagate the data from a file format known as DICOM to the
+NIfTI-format while also performing registration on the files (thus the name
+``dcm2reg``). The three steps are:
+
+1. Conversion between file formats.
+2. Registration of images.
+3. Evaluation of the performed registration.
+
+Refer to :ref:`background` for more information on file formats,
+the registration task etc.
+
 Developing deep learning models for delineation is of high interest in e.g.
 the planning phase of radiation therapy for patients with cancer. Delineations
 are crucial in this application because doctors want to deliver an appropriate
@@ -32,7 +44,7 @@ The contributions of the data science students can be generally summarised as
 follows:
 
 * Splitting the conversion script written by Jintao into several restructured 
-ones and exporting scan selections to an Excel-file to allow for manual checking
+ones and exporting scan selections to an Excel-sheet to allow for manual checking
 and control.
 * Flagging issues with scans for conversion.
 * Handling errors and changing decisions for scan selection. 
