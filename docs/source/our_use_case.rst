@@ -3,14 +3,26 @@ Original use case
 
 Our data 
 ========
-
-* Visual examples - different scans - Philip
-* Levels - color code - Philip
+..
+    * Visual examples - different scans - Philip
+    * Levels - color code - Philip
+    * Noise e.g. table - Philip
 
 The data consits of several different scans: CT, PET and MR. The scans have different color coding. For example
-an MR scan will show tissue as being dark whereas a CT scan will show tissue as being bright which stems from
-the way the different scans are produced
+an MR scan will show bone as being dark whereas a CT scan will show bone as being bright which stems from
+the way the different scans are produced. The scans also have different color codes for air and soft tissue.
 
+.. figure:: images/mr_ct_image.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    CT (left) and MR (right) scan of patient
+
+Thus making it hard to threshold on color values. Especially on the CT-scans we noise arises in the form of the 
+table the patient is lying on. This can also be seen in the above figure. A potential function would thus have a
+hard time differentiating between bone and table. Dental fillings can also cause a problem both for CT and MR
+scans. In CT scans they can cause a sort flaring whereas in MR they add to the variety of color codes.
 
 ..
     * Additional information - Jonathan
@@ -33,15 +45,55 @@ scans *with* delinations include the same organs and since not all scans with th
 have identical naming schemes for those delineations, identifying the correct delineations is a
 challenge that must be met.
 
-* Noise e.g. table - Philip
-* Limitations - very heterogenous data - Busch
+..
+    * Limitations - very heterogenous data - Busch
+Our data is thus very heterogenous as seen with the varying color coding from scan to scan. Also the different
+scans are not necessarily positioned equally in proportion to each other. One scan could be located in the top
+right corner whereas another in the bottom left. The scans also have different dimensions which impacts cropping.
+Sometimes a patient doesn't have both an MR and a CT scan which has to be taken into account when converting.
+These are all limiting factors when wanting to do comparisons and evaluation.
+
 
 Our pipeline and the big picture
 ================================
+..
+    * Preprocessing - conversion, registration, Evaluation - Philip
+The module can be considered as a pipeline which consists of several steps: preprocessing, model development and
+model usage.
 
-* Preprocessing - conversion, registration, Evaluation - Philip
-* Model development - neural network, comparison (CT vs CT+MR) - Busch 
-* Model usage - implementation, user acceptance - Busch
+.. figure:: images/automated_pipeline2.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    Flowchart of the pipeline
+
+Preprocessing
+-------------
+The preprocessing part of the pipeline handles conversion, regristration and evaluation of the registrations.
+This entails conversion of DICOM-files to the nifti format and afterwards regristration of the nifti files.
+The evaluation is based on a metric score computed from the registrations. In our case the MutualInformation
+metric makes sense and having an evaluation threshold at 0.5 is again case specific.
+
+Model development
+-----------------
+..
+    * Model development - neural network, comparison (CT vs CT+MR) - Busch 
+Model development takes the registered images with an adequate metric score and runs them through a chosen 
+neural network. In our case the neural network nnUNET is used. The idea is then to run the neural network first
+with CT-scans only and then the registered images consisting of a CT and an MR and then compare. We are dealing
+with supervised learning since we know what the delineations should look like. nnUNET is an attractive neural
+network to use since it can figure out the hyperparameters (amount of layers, error function, number of neurons, 
+etc.) given the images and labels.
+
+
+
+..
+    * Model usage - implementation, user acceptance - Busch
+
+
+
+
 * Flowchart - Jonathan 
 
 
@@ -81,10 +133,15 @@ with delineations, but no PET- or MR-scans, the selection program cannot be sure
 of the CT-scans to choose, since this is usually done by comparing how many PET- or MR-scans
 relate to the individual CT-scans.
 
-
-
 * A lot of data and therefore slow running - solved in conversion by splitting process. - Jonathan
-* Noise limiting use of thresholding - Philip
+..
+    * Noise limiting use of thresholding - Philip
+In proportion to evaluation of registered images thresholding on a color value was considered but noise in
+the form of tables and dental fillings proved this procedure to be more complicated than first anticipated.
+The solution was instead a mix of thresholding on color value and croppping the images using a cropbox. Thus
+air was still efficiently removed via thresholding whereas noise as for example the table was removed by 
+cropping the image via a margin.
+
 * Thresholding based on change in pixel value turned out to be not possible - Philip
 * Different MR's have different colors - Philip
 * Field difficulty and lack of documentation - Busch
