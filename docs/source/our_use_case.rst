@@ -133,10 +133,15 @@ with delineations, but no PET- or MR-scans, the selection program cannot be sure
 of the CT-scans to choose, since this is usually done by comparing how many PET- or MR-scans
 relate to the individual CT-scans.
 
-
-
 * A lot of data and therefore slow running - solved in conversion by splitting process. - Jonathan
-* Noise limiting use of thresholding - Philip
+..
+    * Noise limiting use of thresholding - Philip
+In proportion to evaluation of registered images thresholding on a color value was considered but noise in
+the form of tables and dental fillings proved this procedure to be more complicated than first anticipated.
+The solution was instead a mix of thresholding on color value and croppping the images using a cropbox. Thus
+air was still efficiently removed via thresholding whereas noise as for example the table was removed by 
+cropping the image via a margin.
+
 * Thresholding based on change in pixel value turned out to be not possible - Philip
 * Different MR's have different colors - Philip
 * Field difficulty and lack of documentation - Busch
