@@ -5,6 +5,7 @@ Background
 
 3D-images
 ==========
+
 ..
     * Medical scans
 
@@ -151,6 +152,7 @@ Many 3D-image similarity metrics, including the above, suffer from an issue wher
 be partially remedied by cropping the image to include as little air as possible.
 In addition to that they also require the images to have the same size, since "something" 
 cannot be compared with "nothing". 
+
 .. 
     Lastly, we also need all the slices in the 3D-image to be 
     comparable, which means that the drawing architecture should be clean and without noise

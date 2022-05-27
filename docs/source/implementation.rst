@@ -44,12 +44,13 @@ one or more *secondary studies* (CT-, PT- and MR-scans without delineations) whi
 most secondary studies within 7 days.
 
 ..
-    * Flowchart - Jonathan ----------------------------
+    * Flowchart - Jonathan
 
 .. figure:: images/convertor-dictwriter-flowchart-part-1.png
     :align: center
     :alt: alternate text
     :figclass: align-center
+    :class: flowchart
 
     Part 1 of the ``dictwriter`` flowchart.
 
@@ -57,6 +58,7 @@ most secondary studies within 7 days.
     :align: center
     :alt: alternate text
     :figclass: align-center
+    :class: flowchart
 
     Part 2 of the ``dictwriter`` flowchart.
 

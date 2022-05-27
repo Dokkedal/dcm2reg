@@ -43,12 +43,11 @@ for x in os.walk('../..'):
 
 sys.path.append(os.path.abspath('../..'))
 
-# -- Function import testing
+# These folders are copied to the documentation's HTML output
+html_static_path = ['_static']
 
-def foo(x):
-    '''Returns input.
-
-    :param x: input parameter.
-    :returns: input made to output.
-    '''
-    return x
+# These paths are either relative to html_static_path
+# or fully qualified paths (eg. https://...)
+html_css_files = [
+    'css/custom.css',
+]

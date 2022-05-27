@@ -1,0 +1,8 @@
+.flowchart {
+    transition: transform .2s ease-out;
+    cursor: pointer;
+}
+
+.flowchart:hover {
+    transform: scale(2.0);
+}

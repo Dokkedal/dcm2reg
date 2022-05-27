@@ -3,6 +3,7 @@ Original use case
 
 Our data 
 ========
+
 ..
     * Visual examples - different scans
     * Levels - color code
@@ -48,6 +49,7 @@ challenge that must be met.
 
 ..
     * Limitations - very heterogenous data
+
 Our data is thus very heterogenous as seen with the varying color coding from scan to scan. Also the different
 scans are not necessarily positioned equally in proportion to each other. One scan could be located in the top
 right corner whereas another in the bottom left. The scans also have different dimensions which impacts cropping.
@@ -59,6 +61,7 @@ Our pipeline and the big picture
 ================================
 ..
     * Preprocessing - conversion, registration, Evaluation
+
 The module can be considered as a pipeline which consists of several steps: preprocessing, model development and
 model usage.
 
@@ -80,6 +83,7 @@ Model development
 -----------------
 ..
     * Model development - neural network, comparison (CT vs CT+MR)
+
 Model development takes the registered images with an adequate metric score and runs them through a chosen 
 neural network. In our case the neural network nnUNET is used. The idea is then to run the neural network first
 with CT-scans only and then the registered images consisting of a CT and an MR and then compare. We are dealing
@@ -182,6 +186,7 @@ Mutual Information instead since producing a mask that only includes values larg
 
 ..
     * Thresholding based on change in pixel value turned out to be not possible
+
 Again in proportion to evaluation an idea was to look at differences in the color value sum for each slice in
 an MR-scan. Thus we would calculate the value sum of a slice and then take the next slice and calculate the
 sum again. If the difference in the two sums were large enough, that is above a certain threshold we crop the
