@@ -1,7 +1,6 @@
-functions
+Functions
 *********
 
-.. module:: conversion_dictwriter
-    :platform: Windows
-
+.. currentmodule:: conversion_dictwriter
 .. autofunction:: parse_args
+.. autofunction:: main
