@@ -1,4 +1,4 @@
-Coding tutorial - Philip
+Coding tutorial
 ****************
 
 When using the module the procedure can be split up into three steps: conversion, registration and evaluation.
