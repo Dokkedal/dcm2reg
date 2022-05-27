@@ -1,3 +1,6 @@
+functions
+*********
+
 .. module:: conversion_dictwriter
     :platform: Windows
 
