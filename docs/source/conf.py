@@ -41,6 +41,8 @@ epub_show_urls = 'footnote'
 for x in os.walk('../..'):
   sys.path.insert(0, x[0])
 
+sys.path.append(os.path.abspath('../..'))
+
 # -- Function import testing
 
 def foo(x):
