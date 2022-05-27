@@ -1,13 +1,70 @@
 Implementation
 ***************
 
-Dicom to nifti conversion - Jonathan
+DICOM-to-NIfTI conversion
 =========================
 
-* Write a dictionary from dicom files 
-* Perform selection of series
-* Flagging issues for manual control
-* Write nifti-files (optional including of different flags)
+..
+    * Write a dictionary from dicom files 
+
+The DICOM-files lie in several folders, each of which corresponds to a single patient.
+The script runs through every DICOM-file and records which patient and which scan it
+belongs to. It does this by producing a ``dictionary`` for each scan with all the necessary
+information, such as Patient ID (anonymised), modality of the scan, date of the scan, which
+files belong to this scan etc. An excerpt showing the different attributes saved to this 
+dictionary can be seen below.
+
+The script saves the dictionary to an Excel-sheet named ``seriesdict_pre_selection.xlsx`` 
+for convenient viewing. Then, it begins sorting through this complete list of scans to figure
+out which ones to convert. A patient may have many different scans from many different 
+dates, but it is desirable to only have scans from a limited span in time, e.g. if patient 
+``qwertyuiop`` has one CT-scan, two MR-scans and a PT-scan from January 1st-5th 2020, but also has
+one CT-scan and two MR-scans from August 10th 2020, the goal is to select a subset of 
+those scans to progress with. This is to ensure that the ultimate deep learning model does not
+get confounded by e.g. a change in tumor size between the two scan periods, which is likely 
+to occur.
+
+..
+    * Perform selection of series
+
+The decisions that the script makes are summarised by the flowchart below. Briefly, it requires
+each patient to have a *primary study* (a scan with delineations, typically a CT-scan) and optionally
+one or more *secondary studies* (CT-, PT- and MR-scans without delineations) which must lie within'
+7 days of the primary study. If there are several primary studies, it selects the one which has the 
+most secondary studies within 7 days.
+..
+    * Flowchart - Jonathan
+
+The selected scans are saved to a new dictionary, which is likewise exported to an Excel-sheet named
+``seriesdict_post_selection.xlsx``. Then, any issues that arose during selection of a patient's scans 
+are flagged in the corresponding patient rows in both Excel-sheets. The flags are denoted with an '
+importance indicator from 1-3, a flag description and by colouring the rows in a certain colour. 
+Higher importance indicator means greater importance, and only the most important flag for a patient is
+given. The types of flags currently used are:
+
+..
+    * Flagging issues for manual control
+
+* *No series selected.* This occurs if the script cannot find any scans with delineations, i.e. no
+  primary studies and thus no secondary studies either. No series will thus be converted for this patient,
+  and in fact this flag will never be shown in the post-selection Excel-sheet. Importance: 3. Colour: Red.
+* *Missing secondary study. Check whether primary study is optimal.* This occurs when there are no
+ secondary studies which lie within 7 days of any of the primary studies. Thus, the script cannot be sure
+ that the selected primary study is indeed the best choice. Importance: 2. Colour: Orange.
+* *Missing attribute.* This occurs when the DICOM-file has missing header information. Typically,
+  it is a missing description of the scan. The description is not used by the script to make decisions,
+  but it is nice to report it anyway. Importance: 1. Colour: Yellow.
+
+..
+    * Write nifti-files (optional including of different flags)
+
+The above steps in conversion are all included in the ``dictwriter`` script. After running this script,
+the developer should perform manual checking of the Excel-sheets, especially with respect to any flags
+there may be. Following this, the ``filewriter`` script can be run. This script reads the post-selection
+Excel-sheet and actually performs the DICOM-to-NIfTI conversion for the specified files. The ``filewriter``
+script also takes arguments that give the option to include scans flagged in a certain colour as if they
+were not flagged, e.g. yellow-flagged scans may be converted independently of orange- and red-flagged ones.
+
 
 Registrations
 =============
@@ -22,7 +79,7 @@ several setups in order to find the one that performed best but in the end we en
 produced by our supervisor. Thus the registration part of the pipeline has not been produced by us. It is included
 for the sake of completeness.
 
-Evaluation of registrations - Philip
+Evaluation of registrations
 ===========================
 Evaluation of registrations can be done via several methods. We are using a cropbox in order to evaluate
 the registration of our images. A cropbox is a cropped version of the image where the cropped part comprises 

@@ -8,9 +8,10 @@ Our data
     * Levels - color code - Philip
     * Noise e.g. table - Philip
 
-The data consits of several different scans: CT, PET and MR. The scans have different color coding. For example
-an MR scan will show bone as being dark whereas a CT scan will show bone as being bright which stems from
-the way the different scans are produced. The scans also have different color codes for air and soft tissue.
+The data consists of several different scans for about 880 patients: CT, PET and MR. 
+The scans have different color coding. For example an MR scan will show bone as being
+dark whereas a CT scan will show bone as being bright which stems from the way the 
+different scans are produced. The scans also have different color codes for air and soft tissue.
 
 .. figure:: images/mr_ct_image.png
     :align: center
@@ -89,13 +90,7 @@ etc.) given the images and labels.
 
 
 ..
-    * Model usage - implementation, user acceptance - Busch
-
-
-
-
-* Flowchart - Jonathan 
-
+    * Model usage - implementation, user acceptance - Busch 
 
 Challenges and solutions
 ========================
