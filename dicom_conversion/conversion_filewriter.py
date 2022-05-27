@@ -82,7 +82,7 @@ def parse_args(targetdir,miscdir, modalitylist, ROIs,includered,includeorange,in
     :param includeorange: boolean variable which includes orange flagged patients if True
     :param includeyellow: boolean variable which includes yellow flagged patients if True
     
-    :returns: parsing arguements
+    :returns: parsing arguments
     """
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 

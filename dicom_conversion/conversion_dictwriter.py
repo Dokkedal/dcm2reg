@@ -84,7 +84,7 @@ def parse_args(startpatient,endpatient,sourcedir, miscdir,modalitylist,ROIs,maxd
     :param maxdelineationdelay: maximum allowed number of days between scan and delineation
     :param maxstudydelay: maximum allowed number of days between primary and secondary study
 
-    :returns: parsing arguements
+    :returns: parsing arguments
     """
 
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')

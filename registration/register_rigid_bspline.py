@@ -19,7 +19,7 @@ def parse_args(sourcedir,targetdir, startpatient, endpatient):
     :param startpatient: starting point
     :param endpatient: end point
     
-    :returns: parsing arguements
+    :returns: parsing arguments
     """
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 

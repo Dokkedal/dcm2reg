@@ -102,7 +102,7 @@ def parse_args(startpatient,endpatient,sourcedir,miscdir, margin, flaggingthresh
     :param margin: number of additional slices that should be removed
     :param flaggingthreshold: evaluation threshold for flagging images
 
-    :returns: parsing arguements
+    :returns: parsing arguments
     """ 
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 

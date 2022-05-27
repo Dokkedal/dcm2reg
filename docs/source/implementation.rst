@@ -118,6 +118,9 @@ evalution of the registrations is done an overview of the metric scores is produ
 flagged values have been colored red.
 
 ..
+    * Figure exemplifying good vs. poor registrations
+
+..
     * Crop zero-columns
     * Crop threshold (manual)
     * Compute MutualInformation
