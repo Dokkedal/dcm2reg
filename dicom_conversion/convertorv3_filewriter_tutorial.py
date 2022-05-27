@@ -72,7 +72,18 @@ STRUCTURE_SET_TIME_TAG = (0x3006, 0x9)
 STRUCTURE_SET_RIO_SEQUENCE_TAG = (0x3006, 0x20)   
 
 def parse_args(targetdir,miscdir, modalitylist, ROIs,includered,includeorange,includeyellow):
-    """Parse input arguments"""
+    """Parsing function that declares relevant variables for later use.
+    
+    :param: targetdir: directory for output nifti files
+    :param: miscdir: directory for miscellanous output
+    :param: modalitylist: list of relevant modalities
+    :param: ROIs: list of relevant regions of interest
+    :param: includered: boolean variable which includes red flagged patients if True
+    :param: includeorange: boolean variable which includes orange flagged patients if True
+    :param: includeyellow: boolean variable which includes yellow flagged patients if True
+    
+    :returns: parsing arguements
+    """
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 
     parser.add_argument(
@@ -144,6 +155,12 @@ def parse_args(targetdir,miscdir, modalitylist, ROIs,includered,includeorange,in
     return parser.parse_args()
 
 def main(args):
+    """produces converted nifti-files using an excel dictionary.
+
+    :param args: arguement object from parse_args 
+
+    :returns: nifti-files
+    """
     args = args
     modality_list = args.modality_list
     ROIs = args.ROIs

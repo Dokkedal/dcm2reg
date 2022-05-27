@@ -494,7 +494,15 @@ class DFConverter:
         return(resultJSON)
 
 def read_dicts_from_excel(filepath,include_red,include_orange,include_yellow):
-    """Read dictionaries from Excel-file via JSON."""
+    """Read dictionaries from Excel-file via JSON.
+    
+    :param filepath: directory for excel-file
+    :param include_red: boolean variable which includes red flagged patients if True
+    :param include_orange: boolean variable which includes orange flagged patients if True
+    :param include_yellow: boolean variable which includes yellow flagged patients if True
+    
+    :returns: series dictionary
+    """
     df = pd.read_excel(filepath)
     
     #print("RED-ORANGE-YELLOW", include_red, include_orange, include_yellow)
@@ -583,6 +591,13 @@ print(ast.literal_eval(f"{[directory, directoryforward, directorydoubleback]}"))
 
 
 def highlight_rows(row,list_flagged):
+    """ flags patients with error codes.
+
+    :param row: row of the flagged patient
+    :param list_flagged: list of flagged patients. 
+
+    :returns: formatting options
+    """
     if row.loc["PatientID"] in list(zip(*list_flagged))[0]:
         if row.loc["Flag"] == "No series selected":
             color = "red"

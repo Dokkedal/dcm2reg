@@ -12,7 +12,15 @@ import argparse
 import pathlib
 
 def parse_args(sourcedir,targetdir, startpatient, endpatient):
-    """Parse input arguments"""
+    """Parsing function that declares relevant variables for later use.
+
+    :param sourcedir: directory for images that needs to be registered
+    :param targetdir: directory for nifti-files output
+    :param startpatient: starting point
+    :param endpatient: end point
+    
+    :returns: parsing arguements
+    """
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 
     parser.add_argument( 
@@ -165,6 +173,15 @@ def BsplineCombineParameterMap():
     return parametermapBspline
 
 def main(args):
+    """Executes rigid and deformable registration on nifti images.
+
+    :param sourcedir: directory for images that needs to be registered
+    :param targetdir: directory for nifti-files output
+    :param startpatient: starting point
+    :param endpatient: end point
+    
+    :returns: parsing arguements
+    """
     erode_filter = sitk.BinaryErodeImageFilter()
     erode_filter.SetKernelType(sitk.sitkBall)
     erode_filter.SetKernelRadius( 10 )

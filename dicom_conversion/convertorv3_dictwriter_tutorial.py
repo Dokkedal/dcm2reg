@@ -73,7 +73,20 @@ STRUCTURE_SET_RIO_SEQUENCE_TAG = (0x3006, 0x20)
 
 
 def parse_args(startpatient,endpatient,sourcedir, miscdir,modalitylist,ROIs,maxdelineationdelay,maxstudydelay):
-    """Parse input arguments"""
+    """Parsing function that declares relevant variables for later use. 
+    
+    :param startpatient: Starting point
+    :param endpatient: End point
+    :param sourcedir: directory for location of dicom files
+    :param miscdir: directory for miscellaneous output
+    :param modalitylist: list of relevant modalities
+    :param ROIs: list of relevant regions of interest
+    :param maxdelineationdelay: maximum allowed number of days between scan and delineation
+    :param maxstudydelay: maximum allowed number of days between primary and secondary study
+
+    :returns: parsing arguements
+    """
+
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 
     parser.add_argument( 
@@ -154,6 +167,12 @@ def parse_args(startpatient,endpatient,sourcedir, miscdir,modalitylist,ROIs,maxd
     return parser.parse_args()
 
 def main(args):
+    """produces a dictionary consisting of patient studies, ROIs, Modalities and apertaining dates.
+
+    :param args: arguement object from parse_args 
+
+    :returns: excel dictionary
+    """
     modality_list = args.modality_list
     ROIs = args.ROIs
     
