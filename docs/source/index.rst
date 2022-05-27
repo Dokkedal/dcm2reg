@@ -19,7 +19,7 @@ NIfTI-format while also performing registration on the files (thus the name
 2. Registration of images.
 3. Evaluation of the performed registration.
 
-Refer to :ref:`background`_ for more information on file formats,
+Refer to :ref:`background` for more information on file formats,
 the registration task etc.
 
 Developing deep learning models for delineation is of high interest in e.g.

@@ -85,8 +85,8 @@ given. The types of flags currently used are:
   primary studies and thus no secondary studies either. No series will thus be converted for this patient,
   and in fact this flag will never be shown in the post-selection Excel-sheet. Importance: 3. Colour: Red.
 * *Missing secondary study. Check whether primary study is optimal.* This occurs when there are no
- secondary studies which lie within 7 days of any of the primary studies. Thus, the script cannot be sure
- that the selected primary study is indeed the best choice. Importance: 2. Colour: Orange.
+  secondary studies which lie within 7 days of any of the primary studies. Thus, the script cannot be sure
+  that the selected primary study is indeed the best choice. Importance: 2. Colour: Orange.
 * *Missing attribute.* This occurs when the DICOM-file has missing header information. Typically,
   it is a missing description of the scan. The description is not used by the script to make decisions,
   but it is nice to report it anyway. Importance: 1. Colour: Yellow.

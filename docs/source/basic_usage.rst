@@ -5,11 +5,13 @@ When using the module the procedure can be split up into three steps: conversion
 
 Conversion
 ==========
+
 The conversion part of the module takes DICOM-files and converts them into nifty files. This is again split
 up into two parts: writing a dictionary and writing nifti files. The dictionary is written using the script
 ``conversion_dictwriter.py`` and is outputted as an excel file. The excel file is accessible by the user
 and also contains the flagged patients. It is important that the folder structure matches the paths given in the 
 function. A structure as follows is thus required for all of the functions to work:
+
 ::
     project directory
     |-- data
