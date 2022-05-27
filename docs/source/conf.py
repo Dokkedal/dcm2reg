@@ -2,7 +2,6 @@
 
 import os
 import sys
-from tkinter import _XYScrollCommand
 
 # -- Project information
 
