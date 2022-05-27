@@ -14,6 +14,9 @@ information, such as Patient ID (anonymised), modality of the scan, date of the 
 files belong to this scan etc. An excerpt showing the different attributes saved to this 
 dictionary can be seen below.
 
+..
+    Columns in Excel--------------------------------
+
 The script saves the dictionary to an Excel-sheet named ``seriesdict_pre_selection.xlsx`` 
 for convenient viewing. Then, it begins sorting through this complete list of scans to figure
 out which ones to convert. A patient may have many different scans from many different 
@@ -33,7 +36,7 @@ one or more *secondary studies* (CT-, PT- and MR-scans without delineations) whi
 7 days of the primary study. If there are several primary studies, it selects the one which has the 
 most secondary studies within 7 days.
 ..
-    * Flowchart - Jonathan
+    * Flowchart - Jonathan ----------------------------
 
 The selected scans are saved to a new dictionary, which is likewise exported to an Excel-sheet named
 ``seriesdict_post_selection.xlsx``. Then, any issues that arose during selection of a patient's scans 
