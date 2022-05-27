@@ -1,6 +1,6 @@
 Functions
 *********
 
-.. currentmodule:: dicom_conversion.conversion_dictwriter
+.. automodule:: dicom_conversion.conversion_dictwriter
 .. autofunction:: parse_args
 .. autofunction:: main
