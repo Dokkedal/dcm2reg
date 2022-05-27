@@ -36,7 +36,8 @@ the advantages of using this metric is that the modalities of the images doesn't
 though the signal is of different intencity for the same tissue AdvancedMattesMutualInformation can still give
 us a decent measure of how well the registration went.
 
-Link about MutualInformation: https://matthew-brett.github.io/teaching/mutual_information.html 
+..
+    Link about MutualInformation: https://matthew-brett.github.io/teaching/mutual_information.html 
 
 During evaluation of the registration images that get a low metric score is flagged. This allows the user
 to do a manual evaluation of low performing registrations. Flagged registrations is colored red in the output

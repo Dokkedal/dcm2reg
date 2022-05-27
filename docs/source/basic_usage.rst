@@ -50,7 +50,6 @@ to input how many images the regristation function should run through. If the fo
 correctly the function will be able to find the needed directories. The registered images are outputted to the
 folder ``nifti_reg``.
 
-
 .. literalinclude:: ../../registration_tutorial.py
     :language: python
     :linenos:
