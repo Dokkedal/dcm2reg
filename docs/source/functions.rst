@@ -7,11 +7,11 @@ Functions
 
 test 1
 
-.. automodule:: dicom_conversion/conversion_dictwriter
+.. automodule:: dicom_conversion::conversion_dictwriter
 
 test 2
 
-.. automodule:: dicom_conversion.conversion_dictwriter
+.. automodule:: dicom_conversion::conversion_dictwriter
 
 test 3
 
@@ -20,3 +20,11 @@ test 3
 test 4
 
 .. automodule:: registration_tutorial.py
+
+test 5
+
+.. autofunction:: dicom_conversion::conversion_dictwriter::main
+
+test 6
+
+.. 

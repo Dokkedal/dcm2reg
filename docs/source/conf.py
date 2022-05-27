@@ -2,6 +2,7 @@
 
 import os
 import sys
+from tkinter import _XYScrollCommand
 
 # -- Project information
 
@@ -40,3 +41,13 @@ epub_show_urls = 'footnote'
 # -- Adding folder structure to sys.path, so that Sphinx can find the .py-files
 for x in os.walk('../..'):
   sys.path.insert(0, x[0])
+
+# -- Function import testing
+
+def foo(x):
+    '''Returns input.
+
+    :param x: input parameter.
+    :returns: input made to output.
+    '''
+    return x
