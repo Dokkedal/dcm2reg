@@ -25,7 +25,7 @@ Helper functions for the conversion scripts
 ``evaluation`` functions
 ========================
 
-.. currentmodule:: evaluation.evaluation
+.. currentmodule:: evaluation
 .. autofunction:: parse_args
 .. autofunction:: main
 .. autofunction:: getCropParameters
