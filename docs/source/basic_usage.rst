@@ -17,6 +17,7 @@ function. A structure as follows is thus required for all of the functions to wo
     |   |   |-- dicom_file1.dcm
     |   |   |-- ...
     |   |-- misc_output
+    |   |   |-- filenames
     |   |-- nifti
     |-- dcm2reg
 
@@ -44,8 +45,11 @@ outputted to the directory ``targetdir``.
 
 Registration
 ============
-
-Skal vi gennemgå noget af jaspers kode her eller?
+The registration part of the module takes the converted nifti files as input and runs two different registrations.
+First a rigid registration is run on all images and afterwards a deformable registration is run. The user needs 
+to input how many images the regristation function should run through. If the folder structure is set up 
+correctly the function will be able to find the needed directories. The registered images are outputted to the
+folder ``nifti_reg``.
 
 .. literalinclude:: ../../registration_tutorial.py
     :language: python
