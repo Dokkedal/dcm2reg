@@ -52,9 +52,14 @@ most secondary studies within 7 days.
         :align: center
         :alt: alternate text
         :figclass: align-center
-        :id: flowchart
+        :class: flowchart
 
         Part 1 of the ``dictwriter`` flowchart.
+
+|
+|
+|
+
 
 .. container:: img-magnifier-container
 
@@ -62,7 +67,7 @@ most secondary studies within 7 days.
         :align: center
         :alt: alternate text
         :figclass: align-center
-        :id: flowchart
+        :class: flowchart2
 
         Part 2 of the ``dictwriter`` flowchart.
 
@@ -164,7 +169,14 @@ flagged values have been colored red.
     * Flag values below threshold
     * Logging
 
+.. raw:: html
 
+    <script>
+    /* Initiate Magnify Function
+    with the id of the image, and the strength of the magnifier glass:*/
+    magnify("flowchart", 2);
+    magnify("flowchart2", 2)
+    </script>
 
 
 
