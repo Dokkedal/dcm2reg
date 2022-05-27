@@ -46,21 +46,23 @@ most secondary studies within 7 days.
 ..
     * Flowchart - Jonathan
 
-.. figure:: images/convertor-dictwriter-flowchart-part-1.png
-    :align: center
-    :alt: alternate text
-    :figclass: align-center
-    :class: flowchart
+.. container:: img-magnifier-container
 
-    Part 1 of the ``dictwriter`` flowchart.
+    .. figure:: images/convertor-dictwriter-flowchart-part-1.png
+        :align: center
+        :alt: alternate text
+        :figclass: align-center
 
-.. figure:: images/convertor-dictwriter-flowchart-part-2.png
-    :align: center
-    :alt: alternate text
-    :figclass: align-center
-    :class: flowchart
+        Part 1 of the ``dictwriter`` flowchart.
 
-    Part 2 of the ``dictwriter`` flowchart.
+.. container:: img-magnifier-container
+
+    .. figure:: images/convertor-dictwriter-flowchart-part-2.png
+        :align: center
+        :alt: alternate text
+        :figclass: align-center
+
+        Part 2 of the ``dictwriter`` flowchart.
 
 The selected scans are saved to a new dictionary, which is likewise exported to an Excel-sheet named
 ``seriesdict_post_selection.xlsx``. Then, any issues that arose during selection of a patient's scans 
