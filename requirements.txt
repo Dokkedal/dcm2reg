@@ -3,13 +3,12 @@ numpy==1.22.2
 simpleitk-simpleelastix==2.0.0rc2.dev908
 pandas==1.4.2
 scikit-image==0.19.1
-six
+six==1.16.0
 matplotlib==3.5.2
 scipy==1.8.0
-tqdm
+tqdm==4.63.0
 openpyxl==3.0.10
-
-
+Jinja2==3.0.3
 
 
 
