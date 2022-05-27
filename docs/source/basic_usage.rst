@@ -17,6 +17,7 @@ function. A structure as follows is thus required for all of the functions to wo
     |   |   |-- dicom_file1.dcm
     |   |   |-- ...
     |   |-- misc_output
+    |   |   |-- filenames
     |   |-- nifti
     |-- dcm2reg
 
