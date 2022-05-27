@@ -1,22 +1,3 @@
-/* .flowchart {
-    transition: transform .2s ease-out;
-    cursor: pointer;
-}
-
-.flowchart:hover {
-    transform: scale(2.0);
-}
-
-img {
-    transition: transform .2s ease-out;
-    cursor: pointer;
-}
-
-img:hover {
-    transform: scale(2.0);
-} */
-
-
 * {box-sizing: border-box;}
 
 div.img-magnifier-container {
