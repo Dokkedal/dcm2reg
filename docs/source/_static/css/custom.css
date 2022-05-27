@@ -6,3 +6,12 @@
 .flowchart:hover {
     transform: scale(2.0);
 }
+
+img {
+    transition: transform .2s ease-out;
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(2.0);
+}
