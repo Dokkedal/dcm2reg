@@ -56,6 +56,17 @@ medical hand-drawn outlines of where organs and tumors are located. These deline
 are crucial to the planning of the medical treatment, and it is thus the main goal
 of an ultimate deep learning model to learn to construct these delineations.
 
+..
+    * Figure with example of two adjacent DICOM-slices.
+
+.. figure:: images/DICOM-slice-1-3.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    Example of three CT-scan slices that are placed below each other on the longitudinal axis 
+    (top-to-bottom axis, with the left-most being the uppermost).
+
 Thus, DICOM-files ensure that all the data for each patient stays with the 
 respective patient. However, in order to make them easier to handle for both doctors
 and an eventual deep learning model, they need to be converted into a niftier format.

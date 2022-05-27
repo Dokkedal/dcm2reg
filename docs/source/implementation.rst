@@ -15,7 +15,14 @@ files belong to this scan etc. An excerpt showing the different attributes saved
 dictionary can be seen below.
 
 ..
-    Columns in Excel--------------------------------
+    Columns in Excel
+
+.. figure:: images/header-post-selection.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    Excerpt showing the Excel-sheet header with names of the saved attributes.
 
 The script saves the dictionary to an Excel-sheet named ``seriesdict_pre_selection.xlsx`` 
 for convenient viewing. Then, it begins sorting through this complete list of scans to figure
@@ -119,6 +126,15 @@ flagged values have been colored red.
 
 ..
     * Figure exemplifying good vs. poor registrations
+
+.. figure:: images/good-vs-poor-reg.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    A good (left) vs a poor (right) registration of T1-MR-scans to CT-scans.
+    The good registration had a metric value of 0.621, while the poor registration
+    was evaluated to a value of 0.190.
 
 ..
     * Crop zero-columns
