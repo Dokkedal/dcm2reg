@@ -49,7 +49,7 @@ html_static_path = ['_static']
 # These paths are either relative to html_static_path
 # or fully qualified paths (eg. https://...)
 html_css_files = [
-    'css/custom.css',
+    'css/custom_zoom.css',
 ]
 
 # Add JavaScript
@@ -58,4 +58,4 @@ html_js_files = [
 ]
 
 def setup(app):
-    app.add_css_file("css/custom.css")
+    app.add_css_file("css/custom_zoom.css")

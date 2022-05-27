@@ -1,0 +1,21 @@
+* {box-sizing: border-box;}
+
+div.img-magnifier-container {
+  position:relative;
+  cursor:none;
+}
+
+div.img-magnifier-container:hover div.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 0%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 300px;
+  height: 300px;
+  display:block;
+}
+
+div.img-magnifier-glass {
+  display:none;
+}
