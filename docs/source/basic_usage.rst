@@ -45,13 +45,10 @@ outputted to the directory ``targetdir``.
 Registration
 ============
 The registration part of the module takes the converted nifti files as input and runs two different registrations.
-First a rigid registration is run on all images and afterwards a deformable registration is run. The deformable 
-registration is a bit more comprehensive since it first runs a rigid registration and then a deformable on the images.
-Also the deformable registration uses a mask so as not to register on pixels that represent air.
-
-The user needs just needs to input how many images the regristation function should run through. If the folder
-structure is set up correctly the function will be able to find the needed directories. The registered images 
-are outputted to the folder ``nifti_reg``.
+First a rigid registration is run on all images and afterwards a deformable registration is run. The user needs 
+to input how many images the regristation function should run through. If the folder structure is set up 
+correctly the function will be able to find the needed directories. The registered images are outputted to the
+folder ``nifti_reg``.
 
 
 .. literalinclude:: ../../registration_tutorial.py

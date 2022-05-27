@@ -11,8 +11,16 @@ Dicom to nifti conversion - Jonathan
 
 Registrations
 =============
+Registration is done via two methods: rigid and deformable. The rigid registration can only use translational
+motion wherears the deformable registration can "shift" voxels if for example the jaw doesn't quite match.
+The deformable registration is a bit more comprehensive since it first runs a rigid registration and then a 
+deformable on the images. Also the deformable registration uses a mask so as not to register on pixels that
+represent air.
 
-* 
+There are many different parameters to take into account when using rigid and deformable registration. We tried
+several setups in order to find the one that performed best but in the end we ended up going with a setup
+produced by our supervisor. Thus the registration part of the pipeline has not been produced by us. It is included
+for the sake of completeness.
 
 Evaluation of registrations - Philip
 ===========================
