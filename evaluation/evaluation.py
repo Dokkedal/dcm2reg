@@ -79,6 +79,13 @@ def badimage(fixedimg,image,direction,pixels):
     
 
 def highlight_rows_eval(row,list_flagged):
+    """ flags patients with error codes.
+
+    :param row: row of the flagged patient
+    :param list_flagged: list of flagged patients. 
+
+    :returns: formatting options
+    """
     if row.loc["PatientNum"] in list_flagged:
         color = "red"
     else:
@@ -86,7 +93,17 @@ def highlight_rows_eval(row,list_flagged):
     return ["background-color: {}".format(color) for r in row]
 
 def parse_args(startpatient,endpatient,sourcedir,miscdir, margin, flaggingthreshold):
-    """Parse input arguments""" 
+    """Parsing function that declares relevant variables for later use. 
+    
+    :param startpatient: Starting point
+    :param endpatient: End point
+    :param sourcedir: directory for location of registered images
+    :param miscdir: directory for miscellaneous output
+    :param margin: number of additional slices that should be removed
+    :param flaggingthreshold: evaluation threshold for flagging images
+
+    :returns: parsing arguements
+    """ 
     parser = argparse.ArgumentParser(description='Parse dicom folder and write to nrrd.')
 
     parser.add_argument( 
@@ -150,7 +167,13 @@ def parse_args(startpatient,endpatient,sourcedir,miscdir, margin, flaggingthresh
 
     return parser.parse_args()
 
-def main(args):   
+def main(args):
+    """Calculates evaluation metric on registered images and flags low perfoming images.
+
+    :param args: arguement object from parse_args 
+
+    :returns: excel-file containing evaluation scores.
+    """ 
     #folder_path = "E:/Jasper/nnUNet/nnUNet_raw_data/Task700_HNCDL"
     #folder_pathrig = "E:/Jasper/HNSCC/nifti_reg"
     folder_pathrig = args.source_dir.__fspath__()
