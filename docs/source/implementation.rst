@@ -37,13 +37,28 @@ to occur.
 ..
     * Perform selection of series
 
-The decisions that the script makes are summarised by the flowchart below. Briefly, it requires
+The decisions that the script makes are summarised by the flowcharts below. Briefly, it requires
 each patient to have a *primary study* (a scan with delineations, typically a CT-scan) and optionally
 one or more *secondary studies* (CT-, PT- and MR-scans without delineations) which must lie within'
 7 days of the primary study. If there are several primary studies, it selects the one which has the 
 most secondary studies within 7 days.
+
 ..
     * Flowchart - Jonathan ----------------------------
+
+.. figure:: images/convertor-dictwriter-flowchart-part-1.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    Part 1 of the ``dictwriter`` flowchart.
+
+.. figure:: images/convertor-dictwriter-flowchart-part-2.png
+    :align: center
+    :alt: alternate text
+    :figclass: align-center
+
+    Part 2 of the ``dictwriter`` flowchart.
 
 The selected scans are saved to a new dictionary, which is likewise exported to an Excel-sheet named
 ``seriesdict_post_selection.xlsx``. Then, any issues that arose during selection of a patient's scans 
