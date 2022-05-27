@@ -113,7 +113,7 @@ descriptions - in fact, there are occasionally scans which completely lack a des
 To overcome this challenge, we have avoided making decisions based on the description,
 and wrapped the attribute reading in an exception catcher as follows.
 
-.. literalinclude:: ../../dicom_conversion/convertorv3_functions.py
+.. literalinclude:: ../../dicom_conversion/conversion_functions.py
     :linenos:
     :lineno-start: 439
     :language: python
