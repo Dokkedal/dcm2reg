@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from dicom_conversion import convertorv3_filewriter_tutorial as filewriter
+from dicom_conversion import conversion_filewriter as filewriter
 
 #Directories
 cwd = os.getcwd()

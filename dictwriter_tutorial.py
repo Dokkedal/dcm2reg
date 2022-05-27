@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 #from dicom_conversion import convertorv3_dictwriter_tutorial as dictwriter
-from dicom_conversion.convertorv3_dictwriter_tutorial import parse_args, main
+from dicom_conversion.conversion_dictwriter import parse_args, main
 
 #Directories
 cwd = os.getcwd()

@@ -41,7 +41,7 @@ from datetime import datetime
 # -*- coding: utf-8 -*-
 #from pandas import json_normalize
 
-from .convertorv3_functions import day_difference, construct_dict_patient, optimal_series, DFConverter, highlight_rows, get_ROIs
+from .conversion_functions import day_difference, construct_dict_patient, optimal_series, DFConverter, highlight_rows, get_ROIs
 
 from .image_readers import read_dcm_series
 

@@ -66,3 +66,4 @@ e.g. with function arguments.
     implementation.rst
     installation.rst
     our_use_case.rst
+    functions.rst
