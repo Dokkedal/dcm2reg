@@ -45,16 +45,20 @@ and a value of around 0 in MR-scans, as described above.
 ..
     * DICOM format 
 
+All three types of medical scans along with medical information are 
+stored in the so-called DICOM-format from the beginning. 
 DICOM is an acronym for Digital Imaging and Communications in Medicine. 
 It is a file format that stores digital 2D-images. Since medical scans are 3D-images,
 you often need hundreds of DICOM files to represent a single scan. Additionally, 
-DICOM files can also store medical information, e.g. descriptions of the scans.
-Thus DICOM-files ensure that all the data for each patient stays with the 
-respective patient.
+DICOM-files can also store medical information, e.g. descriptions of the scans.
+Finally, DICOM-files are even able to store *delineations*, which are essentially
+medical hand-drawn outlines of where organs and tumors are located. These delineations
+are crucial to the planning of the medical treatment, and it is thus the main goal
+of an ultimate deep learning model to learn to construct these delineations.
 
-Typically, all three types of medical scans are stored in the DICOM-format from
-the beginning. However, in order to make them easier to handle for both doctors
-and an ultimate deep learning model, they need to be converted into a niftier format.
+Thus, DICOM-files ensure that all the data for each patient stays with the 
+respective patient. However, in order to make them easier to handle for both doctors
+and an eventual deep learning model, they need to be converted into a niftier format.
 
 ..
     * NIfTI format - input neural network 
@@ -73,31 +77,72 @@ significantly more advantageous than the DICOM-format.
 Registration 
 ============
 
-* Rigid
-* Deformable
+..
+    * Rigid
 
-Evaluation - Busch 
+When only one type of scan is used for a deep learning model, simply converting e.g. 
+the CT-scan to NIfTI is sufficient preprocessing. However, when introducing several
+types of scans simultaneously, one must ensure the scans all contain the exact same
+organs in the exact same areas. E.g. when using both CT-scans and MR-scans as input
+to the neural network, the MR-scan must be manipulated so that e.g. the mandible is
+located across the exact same voxels as in the CT-scan. It is typically easier to
+manipulate the MR-scan, since any delineations are typically created based on the
+CT-scan and would thus also need to be manipulated.
+
+To ensure the above equivalence, a procedure known as *registration* must be performed,
+along with cropping the images in case one scan covers more of the body than the other.
+Registration is done in two types, whereof the first is called *rigid registration*.
+This essentially amounts to rotating and translating the entire MR-scan to fit the CT-scan
+as well as possible. It can occasionally be difficult to perform sufficient registration
+using only the rigid method, e.g. if the patient's jaw was opened a bit more during the
+MR-scan than in the CT-scan.
+
+..
+    * Deformable
+
+The other type of registration, *deformable registration*, solves exactly this problem. 
+In deformable registration, individual voxel values may be displaced within constraints with
+respect to the rest of the image, i.e. in the previous example the lower jaw may be 
+"moved up" to better fit the closed jaw of the CT-scan. This procedure requires a certain 
+level of constraint, since otherwise voxels would be moved erratically. In turn, this
+means deformable registration should be preceded by rigid registration, so that only small
+voxel adjustments are necessary.
+
+Evaluation 
 ============
-* Metrics 
-When you have done a lot of preprocessing with the data, you want to make sure
-that the data is as you expect. One possible way is to manually check all of
-the data that has been processed. Often this is time consuming, and sometimes the human eye
-is not as good at spotting irregularities as computers might be. Therefore, 
-a 'metric' is often used. Metrics often gives one or two values as describes
-how good or how accurate the data has been preprocessed. In our case the 
-'accuracy' is how similar our CT and MR 3D-image is. We have chosen the
-'MutualInformation' as our validation metric. This metric focuses on the
-structure similarities and uses among other things voxel color values 
-for this.
 
-* Cropping - relevant in proportion to Metrics
-Because 'mutual information' uses structural similarities and
-voxel color values, we need to crop the image to all the air gets erased,
-because air has the same picture color value and thus were result
-in a lot of false accuracy. In addition to that we also require
-the images to have the same size, since we can't compare 'something' with
-'nothing'. Lastly, we also need all the slices in the 3D-image to be 
-comparable, which means that the drawing architecture should be clean and without noise
+..
+    * Metrics 
+
+After having performed registration, it remains to check that the registrations
+were performed well. One possible way is to manually check all of
+the data that has been processed, i.e. visualise the images and look for poor 
+registrations. Often this is time consuming, and sometimes the human eye
+is not as good at spotting irregularities as computers might be. Therefore, 
+a *metric* is often used. Metrics measure how well a process was performed, i.e. 
+they often give one or two values that describe how accurately the data was 
+preprocessed. In the case of registration the "accuracy" is how similar the CT- 
+and MR-images are. Several metrics that measure this kind of 3D-image similarity exist,
+including:
+
+* Correlation coefficient, measuring the correlation between voxel values at identical 
+  positions of the two images. 
+* Dice coefficient (also known as the Sørensen-Dice coefficient), measuring the quotient
+  between overlapping volume and total volume.
+* Mutual Information, measuring how well a voxel value from one image can be predicted from
+  the same voxel's value in another image.
+
+..
+    * Cropping - relevant in proportion to Metrics
+
+Many 3D-image similarity metrics, including the above, suffer from an issue wherein
+"background" (in this case, air) voxels contribute to false accuracy. This issue can
+be partially remedied by cropping the image to include as little air as possible.
+In addition to that they also require the images to have the same size, since "something" 
+cannot be compared with "nothing". 
+.. 
+    Lastly, we also need all the slices in the 3D-image to be 
+    comparable, which means that the drawing architecture should be clean and without noise
 
 
 
