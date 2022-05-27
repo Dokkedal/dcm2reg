@@ -118,7 +118,10 @@ and wrapped the attribute reading in an exception catcher as follows.
     :lineno-start: 439
     :language: python
     :lines: 439-446
-    :emphasize-lines: 441-446
+    :emphasize-lines: 3-8
+    
+..
+    441-446
 
 ..
     * Excel cell character limit
