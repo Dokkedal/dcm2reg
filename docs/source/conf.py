@@ -10,7 +10,7 @@ copyright = '2022, Andreas Busch, Philip Leth and Jonathan Nielsen'
 author = 'Andreas Busch, Philip Leth and Jonathan Nielsen'
 
 release = '0.1'
-version = '0.1.0'
+version = '0.2.0'
 
 # -- General configuration
 
