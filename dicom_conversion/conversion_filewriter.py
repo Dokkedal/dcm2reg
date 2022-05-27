@@ -74,13 +74,13 @@ STRUCTURE_SET_RIO_SEQUENCE_TAG = (0x3006, 0x20)
 def parse_args(targetdir,miscdir, modalitylist, ROIs,includered,includeorange,includeyellow):
     """Parsing function that declares relevant variables for later use.
     
-    :param: targetdir: directory for output nifti files
-    :param: miscdir: directory for miscellanous output
-    :param: modalitylist: list of relevant modalities
-    :param: ROIs: list of relevant regions of interest
-    :param: includered: boolean variable which includes red flagged patients if True
-    :param: includeorange: boolean variable which includes orange flagged patients if True
-    :param: includeyellow: boolean variable which includes yellow flagged patients if True
+    :param targetdir: directory for output nifti files
+    :param miscdir: directory for miscellanous output
+    :param modalitylist: list of relevant modalities
+    :param ROIs: list of relevant regions of interest
+    :param includered: boolean variable which includes red flagged patients if True
+    :param includeorange: boolean variable which includes orange flagged patients if True
+    :param includeyellow: boolean variable which includes yellow flagged patients if True
     
     :returns: parsing arguements
     """
