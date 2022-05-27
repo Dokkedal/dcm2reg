@@ -1,0 +1,22 @@
+pydicom==2.2.2
+numpy==1.22.2
+simpleitk==2.0.0rc2.dev908
+pandas==1.4.2
+scikit-image==0.19.1
+six @ file:///tmp/build/80754af9/six_1623709665295/work
+matplotlib==3.5.2
+scipy==1.8.0
+tqdm @ file:///tmp/build/80754af9/tqdm_1625563689033/work
+openpyxl==3.0.10
+
+
+
+
+
+
+
+
+
+
+
+
