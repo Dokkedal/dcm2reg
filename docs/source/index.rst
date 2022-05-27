@@ -19,7 +19,7 @@ NIfTI-format while also performing registration on the files (thus the name
 2. Registration of images.
 3. Evaluation of the performed registration.
 
-Refer to :ref:`_background` for more information on file formats,
+Refer to :ref:`background`_ for more information on file formats,
 the registration task etc.
 
 Developing deep learning models for delineation is of high interest in e.g.
@@ -44,14 +44,14 @@ The contributions of the data science students can be generally summarised as
 follows:
 
 * Splitting the conversion script written by Jintao into several restructured 
-ones and exporting scan selections to an Excel-sheet to allow for manual checking
-and control.
+  ones and exporting scan selections to an Excel-sheet to allow for manual checking
+  and control.
 * Flagging issues with scans for conversion.
 * Handling errors and changing decisions for scan selection. 
 * Writing functions to evaluate registration of images based on a metric score.
 * Exporting metric scores and flagging ones below appropriate threshold.
 * Easing the overall usage of the different scripts by restructuring them, 
-e.g. with function arguments.
+  e.g. with function arguments.
 * Writing documentation both in and out of code.
 
 .. toctree::
