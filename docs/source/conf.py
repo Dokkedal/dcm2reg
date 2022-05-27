@@ -1,5 +1,8 @@
 # Configuration file for the Sphinx documentation builder.
 
+import os
+import sys
+
 # -- Project information
 
 project = 'dcm2reg'
@@ -33,3 +36,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+# -- Adding folder structure to sys.path, so that Sphinx can find the .py-files
+for x in os.walk('../..'):
+  sys.path.insert(0, x[0])
