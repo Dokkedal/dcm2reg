@@ -18,11 +18,13 @@ img:hover {
 
 
 * {box-sizing: border-box;}
-.img-magnifier-container {
+
+div.img-magnifier-container {
   position:relative;
   cursor:none;
 }
-.img-magnifier-container:hover .img-magnifier-glass {
+
+div.img-magnifier-container:hover div.img-magnifier-glass {
   position: absolute;
   border: 3px solid #000;
   border-radius: 50%;
@@ -32,6 +34,7 @@ img:hover {
   height: 100px;
   display:block;
 }
-.img-magnifier-glass {
+
+div.img-magnifier-glass {
   display:none;
 }

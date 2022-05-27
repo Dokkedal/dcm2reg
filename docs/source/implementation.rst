@@ -52,6 +52,7 @@ most secondary studies within 7 days.
         :align: center
         :alt: alternate text
         :figclass: align-center
+        :id: flowchart
 
         Part 1 of the ``dictwriter`` flowchart.
 
@@ -61,6 +62,7 @@ most secondary studies within 7 days.
         :align: center
         :alt: alternate text
         :figclass: align-center
+        :id: flowchart
 
         Part 2 of the ``dictwriter`` flowchart.
 

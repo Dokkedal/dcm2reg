@@ -58,3 +58,7 @@ function magnify(imgID, zoom) {
       return {x : x, y : y};
     }
   }
+
+/* Initiate Magnify Function
+with the id of the image, and the strength of the magnifier glass:*/
+magnify("myimage", 3);
