@@ -65,8 +65,8 @@ follows:
     :hidden:
 
     background.rst
-    basic_usage.rst
     implementation.rst
-    installation.rst
     our_use_case.rst
+    installation.rst
+    basic_usage.rst
     functions.rst
