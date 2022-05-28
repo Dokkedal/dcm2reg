@@ -16,6 +16,16 @@ from openpyxl import load_workbook
 
 #function to resample an image after applying a shift in one or more directions (make sure you apply this to the original before cropping)
 def resample(image, tx=0.0, ty=0.0, tz=0.0, def_value=0.0):
+    """Applies a directional shift in an image.
+
+    :param image: the image to shift
+    :param tx: the number of voxels to shift by along the x-axis. Default 0.0
+    :param ty: the number of voxels to shift by along the y-axis. Default 0.0
+    :param tz: the number of voxels to shift by along the z-axis. Default 0.0
+    :param def_value: the default voxel value to use. Default 0.0
+
+    :returns: image shifted as specified.
+    """
     # Output image Origin, Spacing, Size, Direction are taken from the reference
     # image in this call to Resample
     translation = sitk.TranslationTransform(3)
@@ -28,6 +38,13 @@ def resample(image, tx=0.0, ty=0.0, tz=0.0, def_value=0.0):
 						 
 #function to calculate the mutual information between 2 images
 def calcMI(fixed, moving):
+    """Calculates Mutual Information between two images.
+
+    :param fixed: the fixed image, usually a CT-scan
+    :param moving: the moving image, usually a PT- or MR-scan
+
+    :returns: the Mutual Information value as a float.
+    """
     registration_method = sitk.ImageRegistrationMethod()
     registration_method.SetMetricAsMattesMutualInformation()
     return registration_method.MetricEvaluate(sitk.Cast(fixed, sitk.sitkFloat32),sitk.Cast(moving, sitk.sitkFloat32))
@@ -35,6 +52,14 @@ def calcMI(fixed, moving):
 #function to automatically find the cropbox for an MR image (assuming that the background value is 0). It finds all the voxels
 #with a value of 1 or above.
 def getCropParameters(moving, marginsize=0):
+    """Finds the cropbox for an MR-scan, i.e. a cropbox around all voxels with
+    values greater than or equal to 1.
+
+    :param moving: the MR-scan to find a cropbox in
+    :param marginsize: margin to crop away in addition to cropbox. Default 0
+
+    :returns: a list containing where to crop in all 6 spatial directions
+    """
     label_shape_filter = sitk.LabelShapeStatisticsImageFilter()
     label_shape_filter.Execute(moving)
     #this will give us a bounding box with [indexX, indexY, indexZ, sizeX, sizeY, sizeZ)

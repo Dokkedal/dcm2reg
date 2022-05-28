@@ -1,5 +1,5 @@
-Documentation for dcm2reg
-*************************
+Documentation for ``dcm2reg``
+*****************************
 ..
     * Introduction
 
@@ -32,6 +32,9 @@ suggestions which the doctors can validate upon will cut down manual labour
 on an otherwise time-consuming task. Furthermore, data-based models will
 hopefully be able to reduce some of the individual error-prone biases that 
 doctors inevitably harbour and thus improve standardisation of treatments.
+
+Contributions
+=============
 
 ``dcm2reg`` was created by three data science students at Aarhus University
 during a semester-long data project: Andreas Busch, Philip Leth and Jonathan
