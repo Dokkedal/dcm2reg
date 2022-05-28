@@ -60,7 +60,6 @@ most secondary studies within 7 days.
 |
 |
 
-
 .. container:: img-magnifier-container
 
     .. figure:: images/convertor-dictwriter-flowchart-part-2.png

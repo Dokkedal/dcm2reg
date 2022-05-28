@@ -9,7 +9,7 @@ project = 'dcm2reg'
 copyright = '2022, Andreas Busch, Philip Leth and Jonathan Nielsen'
 author = 'Andreas Busch, Philip Leth and Jonathan Nielsen'
 
-release = '0.1'
+release = '0.2'
 version = '0.2.0'
 
 # -- General configuration

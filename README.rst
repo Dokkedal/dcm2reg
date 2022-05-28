@@ -1,9 +1,11 @@
-Template for the Read the Docs tutorial
-=======================================
+Landing page for ``dcm2reg``
+============================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This is a landing page for the ``dcm2reg`` package, which
+contains scripts and functions for preprocessing of medical
+image data.
 
-Read the tutorial here:
+Visit the documentation page for tutorials and further
+information.
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://dokkedal-dcm2reg.readthedocs.io
