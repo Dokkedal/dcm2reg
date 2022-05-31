@@ -9,7 +9,7 @@ Our data
     * Levels - color code
     * Noise e.g. table
 
-The data consists of several different scans for about 880 patients: CT, PET and MR. 
+The data consists of several different scans for 894 patients: CT, PET and MR. 
 The scans have different color coding. For example an MR scan will show bone as being
 dark whereas a CT scan will show bone as being bright which stems from the way the 
 different scans are produced. The scans also have different color codes for air and soft tissue.
