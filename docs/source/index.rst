@@ -5,7 +5,7 @@ Documentation for ``dcm2reg``
 
 ``dcm2reg`` is a module which is useful for preprocessing medical image data,
 whenever the end goal is to prepare the data for development of e.g. deep
-learning models which can automatically delineate organs and/or tumors.
+learning models which can automatically delineate organs and/or tumours.
 The module is available in ``python`` and is known to work on Windows, however
 other common operating systems (OS X, Linus) likely work as well, as long as
 dependencies can be properly installed.
@@ -25,7 +25,7 @@ the registration task etc.
 Developing deep learning models for delineation is of high interest in e.g.
 the planning phase of radiation therapy for patients with cancer. Delineations
 are crucial in this application because doctors want to deliver an appropriate
-radiation dosage to cancer tumors while affecting organs at risk with as small
+radiation dosage to cancer tumours while affecting organs at risk with as small
 dosages as possible. While deep learning models will hardly replace doctors 
 entirely in delineation tasks at first, simply developing tools that can give
 suggestions which the doctors can validate upon will cut down manual labour
@@ -42,6 +42,11 @@ Nielsen. However, it is also built upon the ``dcm2nii`` module with scripts
 modified by several other contributors, including Jintao Ren, Zixiang-Wei
 (Alan) and Jasper Nijkamp, the latter two of which also supervised the project
 as a whole.
+
+The overall goal of the project was to implement a pipeline to preprocess
+medical scan images of different types to enable supervised deep learning
+for segmentation on those images. This package comprises the resulting
+pipeline.
 
 The contributions of the data science students can be generally summarised as 
 follows:

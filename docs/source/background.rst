@@ -10,7 +10,7 @@ Background
     * Medical scans
 
 In radiation therapy, medical body scans are an important tool which
-doctors can use for planning dosage delivery. Several different kinds
+doctors can use for planning dosage delivery. Several different *modalities*
 of scans are used, including:
 
 * *Computed Tomography* (CT) scans. These essentially take cross-sectional
@@ -40,33 +40,33 @@ height of the pixel. In the case of 3D-images, a voxel is defined by the (x,y,z)
 coordinates of its centre along with a colour value. Likewise, the size 
 of a voxel is defined by the voxel's length, height and depth multiplied together. 
 The colour values of medical scans typically lie on a greyscale range based on
-the type of scan, i.e. voxels that show air will have a value of -1000 in CT-scans
+the modality of scan, i.e. voxels that show air will have a value of -1000 in CT-scans
 and a value of around 0 in MR-scans, as described above.
 
 ..
     * DICOM format 
 
-All three types of medical scans along with medical information are 
+All three modalities of medical scans along with medical information are 
 stored in the so-called DICOM-format from the beginning. 
 DICOM is an acronym for Digital Imaging and Communications in Medicine. 
 It is a file format that stores digital 2D-images. Since medical scans are 3D-images,
 you often need hundreds of DICOM files to represent a single scan. Additionally, 
 DICOM-files can also store medical information, e.g. descriptions of the scans.
 Finally, DICOM-files are even able to store *delineations*, which are essentially
-medical hand-drawn outlines of where organs and tumors are located. These delineations
+medical hand-drawn outlines of where organs and tumours are located. These delineations
 are crucial to the planning of the medical treatment, and it is thus the main goal
 of an ultimate deep learning model to learn to construct these delineations.
 
 ..
     * Figure with example of two adjacent DICOM-slices.
 
-.. figure:: images/DICOM-slice-1-3.png
+.. figure:: images/DICOM-axi-cor-sag.png
     :align: center
     :alt: alternate text
     :figclass: align-center
 
-    Example of three CT-scan slices that are placed below each other on the longitudinal axis 
-    (top-to-bottom axis, with the left-most being the uppermost).
+    Example of three CT-scan slices in the axial (left), coronal (middle) and sagittal
+    (right) plane. The slices have been zoomed independently for ease of viewing.
 
 Thus, DICOM-files ensure that all the data for each patient stays with the 
 respective patient. However, in order to make them easier to handle for both doctors
@@ -92,9 +92,9 @@ Registration
 ..
     * Rigid
 
-When only one type of scan is used for a deep learning model, simply converting e.g. 
+When only one modality of scan is used for a deep learning model, simply converting e.g. 
 the CT-scan to NIfTI is sufficient preprocessing. However, when introducing several
-types of scans simultaneously, one must ensure the scans all contain the exact same
+modalities of scans simultaneously, one must ensure the scans all contain the exact same
 organs in the exact same areas. E.g. when using both CT-scans and MR-scans as input
 to the neural network, the MR-scan must be manipulated so that e.g. the mandible is
 located across the exact same voxels as in the CT-scan. It is typically easier to
@@ -114,7 +114,7 @@ MR-scan than in the CT-scan.
 
 The other type of registration, *deformable registration*, solves exactly this problem. 
 In deformable registration, individual voxel values may be displaced within constraints with
-respect to the rest of the image, i.e. in the previous example the lower jaw may be 
+respect to the rest of the image, i.e. in the previous example, the lower jaw may be 
 "moved up" to better fit the closed jaw of the CT-scan. This procedure requires a certain 
 level of constraint, since otherwise voxels would be moved erratically. In turn, this
 means deformable registration should be preceded by rigid registration, so that only small
@@ -133,16 +133,19 @@ registrations. Often this is time consuming, and sometimes the human eye
 is not as good at spotting irregularities as computers might be. Therefore, 
 a *metric* is often used. Metrics measure how well a process was performed, i.e. 
 they often give one or two values that describe how accurately the data was 
-preprocessed. In the case of registration the "accuracy" is how similar the CT- 
+preprocessed. In the case of registration, the "accuracy" is how similar the CT- 
 and MR-images are. Several metrics that measure this kind of 3D-image similarity exist,
 including:
 
 * Correlation coefficient, measuring the correlation between voxel values at identical 
-  positions of the two images. 
+  positions of the two images. Only works within the same modality, since the correlation
+  requires e.g. bone to always be brighter than fat tissue to be appropriate.
 * Dice coefficient (also known as the Sørensen-Dice coefficient), measuring the quotient
-  between overlapping volume and total volume.
+  between overlapping volume and total volume. The volumes are based on segmentation and/or
+  selected to include only voxels with values above a certain threshold.
 * Mutual Information, measuring how well a voxel value from one image can be predicted from
-  the same voxel's value in another image.
+  the same voxel's value in another image. Is not dependent on direct correlation between voxel
+  values, and is thus useful for comparing scans with different modalities.
 
 ..
     * Cropping - relevant in proportion to Metrics
@@ -150,7 +153,7 @@ including:
 Many 3D-image similarity metrics, including the above, suffer from an issue wherein
 "background" (in this case, air) voxels contribute to false accuracy. This issue can
 be partially remedied by cropping the image to include as little air as possible.
-In addition to that they also require the images to have the same size, since "something" 
+In addition to that, they also require the images to have the same size, since "something" 
 cannot be compared with "nothing". 
 
 .. 

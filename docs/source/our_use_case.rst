@@ -10,7 +10,7 @@ Our data
     * Noise e.g. table
 
 The data consists of several different scans for 894 patients: CT, PET and MR. 
-The scans have different color coding. For example an MR scan will show bone as being
+The scans have different colour coding. For example, an MR scan will show bone as being
 dark whereas a CT scan will show bone as being bright which stems from the way the 
 different scans are produced. The scans also have different color codes for air and soft tissue.
 
@@ -21,25 +21,25 @@ different scans are produced. The scans also have different color codes for air 
 
     CT- (left) and MR- (right) scan of patient
 
-Thus making it hard to threshold on color values. Especially on the CT-scans we noise arises in the form of the 
+Thus making it hard to threshold on colour values. Especially on the CT-scans we noise arises in the form of the 
 table the patient is lying on. This can also be seen in the above figure. A potential function would thus have a
 hard time differentiating between bone and table. Dental fillings can also cause a problem both for CT and MR
-scans. In CT scans they can cause a sort flaring whereas in MR they add to the variety of color codes.
+scans. In CT scans they can cause a sort of flaring whereas in MR they add to the variety of colour codes.
 
 ..
     * Additional information
     * Delineation in RTSTRUCT
 
 In addition to the images themselves, the data contains various header information, such as 
-the *modality* of the image (i.e. whether it is a CT-, PET- or MR-scan), the date of the scan,
+the modality of the image, the date of the scan,
 a medical description of the scan etc. This information is crucial in identifying the scans,
 referring to them and making decisions about them.
 
-For some of the scans (typically a CT-scan), a doctor has delineated various organs and/or tumors.
+For some of the scans (typically a CT-scan), a doctor has delineated various organs and/or tumours.
 These delineations are saved as a set of lines in one or more so-called *RTSTRUCT*-file(s). The
 RTSTRUCT-file also contains the name of each delineation, e.g. "brain" or "parotid_L" for the left
 parotid gland. Occasionally, a single organ may have been delineated more than once, e.g. if a 
-patient's tumor changed in shape or size due to treatment performed between two delineations. 
+patient's tumour changed in shape or size due to treatment performed between two delineations. 
 In this case, the two delineations will be saved in different RTSTRUCT-files from different dates.
 The delineations must be kept track of alongside the rest of the data, as they are essentially what
 an ultimate model must learn from. However, since not all scans have delineations, since not all
@@ -50,9 +50,10 @@ challenge that must be met.
 ..
     * Limitations - very heterogenous data
 
-Our data is thus very heterogenous as seen with the varying color coding from scan to scan. Also the different
+Our data is thus very heterogeneous as seen with the varying colour coding from scan to scan. Also the different
 scans are not necessarily positioned equally in proportion to each other. One scan could be located in the top
-right corner whereas another in the bottom left. The scans also have different dimensions which impacts cropping.
+right corner whereas another in the bottom left. The scans also have different dimensions, a feature
+which impacts cropping.
 Sometimes a patient doesn't have both an MR and a CT scan which has to be taken into account when converting.
 These are all limiting factors when wanting to do comparisons and evaluation.
 
@@ -74,9 +75,9 @@ model usage.
 
 Preprocessing
 -------------
-The preprocessing part of the pipeline handles conversion, regristration and evaluation of the registrations.
-This entails conversion of DICOM-files to the nifti format and afterwards regristration of the nifti files.
-The evaluation is based on a metric score computed from the registrations. In our case the MutualInformation
+The preprocessing part of the pipeline handles conversion, registration and evaluation of the registrations.
+This entails conversion of DICOM-files to the nifti format and afterwards registration of the nifti files.
+The evaluation is based on a metric score computed from the registrations. In our case, the Mutual Information
 metric makes sense and having an evaluation threshold at 0.5 is again case specific.
 
 Model development
@@ -88,7 +89,7 @@ Model development takes the registered images with an adequate metric score and 
 neural network. In our case the neural network nnUNET is used. The idea is then to run the neural network first
 with CT-scans only and then the registered images consisting of a CT and an MR and then compare. We are dealing
 with supervised learning since we know what the delineations should look like. nnUNET is an attractive neural
-network to use since it can figure out the hyperparameters (amount of layers, error function, number of neurons, 
+network to use since it can figure out the hyperparameters (amount of layers, number of neurons, loss function 
 etc.) given the images and labels.
 
 
@@ -141,7 +142,7 @@ has not yet been implemented.
 ..
     * Many edge cases e.g. missing secondary study
 
-The general hetereogeneity of the data also poses a challenge, since there are so
+The general heterogeneity of the data also poses a challenge, since there are so
 many edge cases to consider. Some patients do not have a CT-scan with RTSTRUCT-files at
 all, which consequently means none of the scans for that patient will be selected for 
 conversion. This essentially causes any PET- and MR-scans to be dropped due to a lack of
@@ -165,7 +166,7 @@ the computationally expensive part of this task.
 A similarly resource-diminishing approach would be very desirable for the registration task, 
 which requires even more compute. However, in this task, it is more difficult to evaluate
 solutions without simply running the entirety of the script, i.e. the only feasible route by
-which to see the effects of a given solution is to implement it and consider the results afterward.
+which to see the effects of a given solution is to implement it and consider the results afterwards.
 
 ..
     * Noise limiting use of thresholding
@@ -173,9 +174,9 @@ which to see the effects of a given solution is to implement it and consider the
 In proportion to evaluation of registered images thresholding on a color value was considered but noise in
 the form of tables and dental fillings proved this procedure to be more complicated than first anticipated. 
 We wished to evaluate using a dice coefficient. Thus it was necessary to produce a mask so unwanted pixels 
-didn't come in to play when evaluating. The idea was to let all pixels with a value larger than zero, where
+didn't come into play when evaluating. The idea was to let all pixels with a value larger than zero, where
 a value of zero equals air, constitute the mask. A table would have a value larger than zero but it would
-not be desireable to include in the evaluation. Also the dice coefficient is vulnerable to varying volumes of 
+not be desirable to include in the evaluation. Also the dice coefficient is vulnerable to varying volumes of 
 the scanned object. These two issues caused us to use another evaluation method and metric.
 
 The solution was instead a mix of thresholding on color value and croppping the images using a cropbox. The
