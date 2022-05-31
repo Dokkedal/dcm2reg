@@ -22,6 +22,9 @@ NIfTI-format while also performing registration on the files (thus the name
 Refer to :ref:`background` for more information on file formats,
 the registration task etc.
 
+Motivation
+==========
+
 Developing deep learning models for delineation is of high interest in e.g.
 the planning phase of radiation therapy for patients with cancer. Delineations
 are crucial in this application because doctors want to deliver an appropriate
